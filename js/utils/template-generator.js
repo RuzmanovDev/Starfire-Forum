@@ -1,4 +1,4 @@
-import 'jquery'
+
 import Handlebars from 'handlebars'
 
 function loadTemplate(templateName) {
