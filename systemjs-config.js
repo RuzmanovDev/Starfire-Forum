@@ -9,7 +9,8 @@ SystemJS.config({
         'sammy': './bower_components/sammy/lib/sammy.js',
         'handlebars': './bower_components/handlebars/handlebars.js',
         // scripts
-        'main': './js/app.js'
+        'main': './js/app.js',
+        'kinvey-constants': 'js/utils/constants/kinvey-constants.js'
     }
 });
 
