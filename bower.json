@@ -1,0 +1,21 @@
+{
+  "name": "Forum",
+  "homepage": "https://github.com/RuzmanovDev/Team-Starfire-JsApps",
+  "authors": [
+    "RuzmanovDev <stoyan.ruzmanov@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0",
+    "sammy": "^0.7.6"
+  }
+}

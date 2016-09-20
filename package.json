@@ -1,0 +1,23 @@
+{
+  "name": "forum-system",
+  "version": "1.0.0",
+  "description": "Teamwork for the Javascript applications course at Telerik academy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RuzmanovDev/Team-Starfire-JsApps.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RuzmanovDev/Team-Starfire-JsApps/issues"
+  },
+  "homepage": "https://github.com/RuzmanovDev/Team-Starfire-JsApps#readme",
+  "dependencies": {
+    "systemjs": "^0.19.38",
+    "systemjs-plugin-babel": "0.0.15"
+  }
+}
