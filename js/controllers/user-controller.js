@@ -7,8 +7,8 @@ const mainContainer = $('#wrapper');
 class UserController {
     register(context) {
         var newUser = {
-            username: 'gosho',
-            password: 'gosho',
+            username: 'pencho',
+            password: 'pencho',
         };
 
         userData.register(newUser);

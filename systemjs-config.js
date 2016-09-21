@@ -15,6 +15,7 @@ SystemJS.config({
         'kinvey-constants': 'js/utils/constants/kinvey-constants.js',
         'template-generator': 'js/utils/template-generator.js',
         'notifier': 'js/utils/notifier.js',
+        'requester': 'js/utils/requester.js',
         // controllers
         'user-controller': 'js/controllers/user-controller.js'
     }
