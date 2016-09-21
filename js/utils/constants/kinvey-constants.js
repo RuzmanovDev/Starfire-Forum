@@ -1,5 +1,5 @@
-const APP_ID = "kid_Syz1toa3",
-    APP_SECRET = "9b54b75b0aff4252a1f9a7ef94e83e8f";
+const APP_ID = "kid_ry0hRoka",
+    APP_SECRET = "89a44f135f134a0995328fcd87389641";
 
 const kinveyConst = {
     APP_ID,

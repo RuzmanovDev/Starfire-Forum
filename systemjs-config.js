@@ -8,9 +8,15 @@ SystemJS.config({
         'jquery': './bower_components/jquery/dist/jquery.js',
         'sammy': './bower_components/sammy/lib/sammy.js',
         'handlebars': './bower_components/handlebars/handlebars.js',
+        'toastr': './bower_components/toastr/toastr.js',
         // scripts
         'main': './js/app.js',
-        'kinvey-constants': 'js/utils/constants/kinvey-constants.js'
+        // utils
+        'kinvey-constants': 'js/utils/constants/kinvey-constants.js',
+        'template-generator': 'js/utils/template-generator.js',
+        'notifier': 'js/utils/notifier.js',
+        // controllers
+        'user-controller': 'js/controllers/user-controller.js'
     }
 });
 

@@ -1,4 +1,3 @@
-
 import Handlebars from 'handlebars'
 
 function loadTemplate(templateName) {
@@ -15,7 +14,6 @@ function loadTemplate(templateName) {
         })
     });
 }
-
 
 class TemplateGenerator {
     load(templateName) {
