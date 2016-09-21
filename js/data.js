@@ -14,11 +14,11 @@ class UserData {
             username: user.username,
             password: user.password
         };
-        requester.post(url, {
+
+        return requester.post(url, {
             headers: headers,
             data: theUser,
         });
-
     }
 
     login(user) {
@@ -28,7 +28,11 @@ class UserData {
             'Authorization': `Basic ${authorization}`,
             'ContentType': 'application/json',
         };
-        requester.post(url, headers);
+        console.log(user);
+        return requester.post(url, {
+            headers: headers,
+            data: user
+        });
     }
 
     logout() {

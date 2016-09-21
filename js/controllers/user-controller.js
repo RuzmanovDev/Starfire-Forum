@@ -18,18 +18,48 @@ class UserController {
             .then(function () {
                 $('#btn-register').on('click', function () {
                     var username = $('#user-name').val(),
-                        password = $('#inputPassword').val();
+                        password = $('#input-password').val();
 
                     let newUser = {username, password};
 
-                    return userData.register(newUser);
+                    userData.register(newUser)
+                        .then(function (user) {
+                            notifier.success(`${user.username} successfully registered!`);
+                        });
                 });
             })
     }
 
     login(context) {
-        var user = "";
-        userData.login(user);
+        templateGenerator.load('login')
+            .then(function (htmlContent) {
+                mainContainer.html(htmlContent);
+            })
+            .then(function () {
+                $('#btn-login').on('click', function () {
+                    var username = $('#user-name').val(),
+                        password = $('#input-password').val();
+                    let user = {
+                        username,
+                        password
+                    };
+                    userData.login(user)
+                        .then(function (success) {
+                            localStorage.setItem('username', success.username);
+                            localStorage.setItem('userId', success._id);
+                            localStorage.setItem('authKey', success._kmd.authtoken);
+                        })
+                        .then(function () {
+                            notifier.success(`${user.username} logged in!`);
+                            context.redirect(`#/`);
+                        })
+                        .catch(function (err) {
+                            notifier.error(`${err} occured`);
+                        });
+                })
+            })
+
+
     }
 
     logout(context) {
