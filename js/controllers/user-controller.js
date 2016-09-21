@@ -1,9 +1,10 @@
 import 'jquery'
 import {templateGenerator} from 'template-generator'
 import {notifier} from 'notifier'
-import {userData} from 'js/data.js'
+import {userData} from 'js/user-data.js'
 
 const mainContainer = $('#wrapper');
+
 class UserController {
     register(context) {
         templateGenerator.load('register')

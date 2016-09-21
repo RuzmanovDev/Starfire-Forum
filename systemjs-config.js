@@ -17,7 +17,8 @@ SystemJS.config({
         'notifier': 'js/utils/notifier.js',
         'requester': 'js/utils/requester.js',
         // controllers
-        'user-controller': 'js/controllers/user-controller.js'
+        'user-controller': 'js/controllers/user-controller.js',
+        'thread-controller': 'js/controllers/thread-controller.js'
     }
 });
 

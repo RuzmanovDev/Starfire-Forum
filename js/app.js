@@ -2,7 +2,7 @@ import Sammy from 'sammy'
 import 'jquery'
 import {kinveyConst} from 'kinvey-constants'
 import {userController} from 'user-controller'
-
+import {threadController} from 'thread-controller'
 const wrapper = '#wrapper';
 console.log(kinveyConst);
 
@@ -11,15 +11,16 @@ const sammyApp = Sammy(wrapper, function () {
 
     this.get('#/login', userController.login);
 
-    this.get('#/posts', function () {
-        $('#wrapper').html("HOME");
+    this.get('#/home', function () {
+        getAll()
+            .then(function (data) {
+                console.log(data);
+            });
     });
 
     this.get('#/logout', userController.logout);
 
-    this.get('#/', function () {
-        $('#wrapper').html("HOME");
-    });
+    this.get('#/', threadController.home);
 });
 
 // var register = function (user) {
@@ -81,15 +82,10 @@ const sammyApp = Sammy(wrapper, function () {
 //
 // };
 
-function getAll(user) {
-    let url = `https://baas.kinvey.com/appdata/${kinveyConst.APP_ID}/books`;
+function getAll() {
+    let url = `https://baas.kinvey.com/appdata/${kinveyConst.APP_ID}/ios`;
     let authorization = btoa(`${kinveyConst.APP_ID}:${kinveyConst.APP_SECRET}`);
-    let mk = '5c87e01676414974a4a9ab3285b229c3';
     var promise = new Promise(function (resolve, reject) {
-        var theUser = {
-            username: user.username,
-            password: user.password
-        };
         $.ajax({
             url: url,
             method: 'GET',

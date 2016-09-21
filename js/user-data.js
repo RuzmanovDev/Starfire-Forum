@@ -41,7 +41,7 @@ class UserData {
             'Authorization': `Kinvey ${localStorage.authKey}`
         };
 
-        return requester.post(url, {headers})
+        return requester.post(url,{headers})
     }
 }
 
