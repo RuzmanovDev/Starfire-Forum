@@ -15,6 +15,8 @@ const sammyApp = Sammy(wrapper, function () {
         $('#wrapper').html("HOME");
     });
 
+    this.get('#/logout', userController.logout);
+
     this.get('#/', function () {
         $('#wrapper').html("HOME");
     });

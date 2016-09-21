@@ -6,11 +6,6 @@ import {userData} from 'js/data.js'
 const mainContainer = $('#wrapper');
 class UserController {
     register(context) {
-        // var newUser = {
-        //     username: 'pencho',
-        //     password: 'pencho',
-        // };
-
         templateGenerator.load('register')
             .then(function (htmlContent) {
                 mainContainer.html(htmlContent);
@@ -25,7 +20,11 @@ class UserController {
                     userData.register(newUser)
                         .then(function (user) {
                             notifier.success(`${user.username} successfully registered!`);
-                        });
+                            context.redirect('#/login')
+                        }).catch(function (errorLog) {
+                        notifier.error(errorLog);
+                        console.log(errorLog);
+                    });
                 });
             })
     }
@@ -53,17 +52,24 @@ class UserController {
                             notifier.success(`${user.username} logged in!`);
                             context.redirect(`#/`);
                         })
-                        .catch(function (err) {
-                            notifier.error(`${err} occured`);
+                        .catch(function (errorLog) {
+                            notifier.error(`${errorLog} occurred`);
+                            console.log(errorLog)
                         });
                 })
             })
-
-
     }
 
     logout(context) {
-        userData.logout();
+        userData.logout()
+            .then(function (data) {
+                notifier.success(`You have logged out successfully!`);
+                context.redirect('#/login');
+            })
+            .catch(function (errorLog) {
+                notifier.error(errorLog);
+                console.log(errorLog);
+            });
     }
 }
 

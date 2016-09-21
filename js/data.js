@@ -28,7 +28,7 @@ class UserData {
             'Authorization': `Basic ${authorization}`,
             'ContentType': 'application/json',
         };
-        console.log(user);
+
         return requester.post(url, {
             headers: headers,
             data: user
@@ -36,7 +36,12 @@ class UserData {
     }
 
     logout() {
+        let url = `https://baas.kinvey.com/user/${kinveyConst.APP_ID}/_logout`;
+        let headers = {
+            'Authorization': `Kinvey ${localStorage.authKey}`
+        };
 
+        return requester.post(url, {headers})
     }
 }
 
