@@ -6,29 +6,34 @@ import {userData} from 'js/data.js'
 const mainContainer = $('#wrapper');
 class UserController {
     register(context) {
-        var newUser = {
-            username: 'pencho',
-            password: 'pencho',
-        };
+        // var newUser = {
+        //     username: 'pencho',
+        //     password: 'pencho',
+        // };
 
-        userData.register(newUser);
-        // templateGenerator.load('register')
-        //     .then(function (htmlContent) {
-        //         mainContainer.html(htmlContent);
-        //     })
-        //     .then(function () {
-        //         var newUser = {
-        //             username: 'gosho',
-        //             password: 'gosho',
-        //         };
-        //
-        //         userData.register(newUser);
-        //     })
+        templateGenerator.load('register')
+            .then(function (htmlContent) {
+                mainContainer.html(htmlContent);
+            })
+            .then(function () {
+                $('#btn-register').on('click', function () {
+                    var username = $('#user-name').val(),
+                        password = $('#inputPassword').val();
+
+                    let newUser = {username, password};
+
+                    return userData.register(newUser);
+                });
+            })
     }
 
-    login(context){
+    login(context) {
         var user = "";
         userData.login(user);
+    }
+
+    logout(context) {
+        userData.logout();
     }
 }
 

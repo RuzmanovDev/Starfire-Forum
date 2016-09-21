@@ -7,7 +7,17 @@ const wrapper = '#wrapper';
 console.log(kinveyConst);
 
 const sammyApp = Sammy(wrapper, function () {
-    this.get('#/register',userController.register)
+    this.get('#/register', userController.register);
+
+    this.get('#/login', userController.login);
+
+    this.get('#/posts', function () {
+        $('#wrapper').html("HOME");
+    });
+
+    this.get('#/', function () {
+        $('#wrapper').html("HOME");
+    });
 });
 
 // var register = function (user) {
