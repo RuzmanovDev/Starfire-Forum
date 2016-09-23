@@ -6,7 +6,6 @@ import {threadController} from 'thread-controller'
 import {requester} from 'requester'
 
 const wrapper = '#wrapper';
-// console.log(kinveyConst);
 
 const sammyApp = Sammy(wrapper, function () {
     // User handling routes
@@ -17,15 +16,6 @@ const sammyApp = Sammy(wrapper, function () {
     // navigation routes
     this.get('#/home', threadController.home);
     this.get('#/askQuestion', threadController.askQuestion);
-
-    //     function () {
-    //     // vizmam kategoriqta, posle tarsq v neq kolekciq koqto ima imeto koeto e caknkano sled tova vadq idto na tazi kolekicq i pravq zavakite
-    //    getAll()
-    //        .then(function (data) {
-    //            console.log(data.find(el=>el.title === "Test"));
-    //        });
-    //
-    // });
 
     // Categories routes
     this.get('#/ios', ()=> threadController.showThread('ios'));

@@ -17,7 +17,7 @@ class ThreadController {
     showThread(threadName) {
         Promise.all([templateGenerator.load('thread'), threadData.getThread(threadName)])
             .then(function ([htmlTemplate,data]) {
-                // in order to make the thread template generic we need to add the threadname to the data object
+                // in order to make the thread template generic we need to add the thread name to the data object
                 data = {
                     data: data,
                     categoryName: threadName
@@ -61,26 +61,31 @@ class ThreadController {
     showQuestion(context) {
         templateGenerator.load('selected-question')
             .then(function (htmlContent) {
-
                 let threadData = JSON.parse(localStorage.threadData);
                 let urlId = context.params.id;
                 let questiondData = threadData.data.find(element=>element._id === urlId);
+
                 localStorage.setItem("currentQuestion", JSON.stringify(questiondData));
                 mainContainer.html(htmlContent(questiondData));
             })
-            .then(function (d) {
+            .then(function () {
                 $('#btn-post-response').on('click', function () {
-                    let responseContent = $('#post-response-content').val();
-                    console.log(responseContent);
-                    threadData.addResponse(responseContent);
-                    // then
+                    let responseContentContainer = $('#post-response-content');
+                    let responseContent = responseContentContainer.val();
+                    responseContentContainer.val("");
+                    threadData.addResponse(responseContent)
+                        .then(function () {
+                            notifier.success("Post added!");
+                        })
+                        .catch(function (errorLog) {
+                            notifier.error("The post wasn't added! Please try again!");
+                            console.log(errorLog)
+                        })
+
                 })
             })
     }
 
-    all() {
-
-    }
 }
 
 const threadController = new ThreadController();

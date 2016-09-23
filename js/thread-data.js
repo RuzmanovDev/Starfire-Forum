@@ -38,13 +38,8 @@ class ThreadData {
         let post = new Post(author, responseContent);
         let currentQuestion = JSON.parse(localStorage.currentQuestion);
         let currentQuestionID = currentQuestion._id;
-        let currentQuestionsPosts = currentQuestion.posts;
         let threadData = JSON.parse(localStorage.threadData);
 
-        // console.log(currentQuestionID);
-        // console.log(currentQuestionsPosts);
-        // currentQuestionsPosts.push(post);
-        // console.log(currentQuestionsPosts);
         let dataToUpdate;
         for (let array of threadData.data) {
             if (array._id === currentQuestionID) {
@@ -52,15 +47,13 @@ class ThreadData {
                 dataToUpdate = array;
             }
         }
-        console.log(dataToUpdate);
         let url = `https://baas.kinvey.com/appdata/${kinveyConst.APP_ID}/${threadData.categoryName}/${currentQuestionID}`;
         let headers = {
             'Authorization': `Kinvey ${localStorage.authKey}`,
             'ContentType': 'application/json',
         };
 
-        console.log(requester.get(url, {headers}));
-        requester.put(url, {
+        return requester.put(url, {
             headers: headers,
             data: dataToUpdate
         });
