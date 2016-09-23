@@ -17,8 +17,15 @@ class ThreadController {
     showThread(threadName) {
         Promise.all([templateGenerator.load('thread'), threadData.getThread(threadName)])
             .then(function ([htmlTemplate,data]) {
-                console.log(data);
+                // in order to make the thread template generic we need to add the threadname to the data object
+                data = {
+                    data: data,
+                    categoryName: threadName
+                };
                 mainContainer.html(htmlTemplate(data));
+            })
+            .catch(function () {
+                notifier.error("You must be logged in in order to view to threads!")
             })
     }
 
@@ -37,11 +44,22 @@ class ThreadController {
                         threadCategory,
                         postTitle,
                         postQuestion
-                    });
+                    })
+                        .then(function () {
+                            notifier.success('Post Added');
+                            context.redirect(`#/${threadCategory}`);
+                        })
+                        .catch(function () {
+                            notifier.error("You must be logged in to post!");
+                            context.redirect('#/login');
+                        });
                 })
             })
     }
 
+    showQuestion(context){
+        mainContainer.html("WOHOO");
+    }
     all() {
 
     }

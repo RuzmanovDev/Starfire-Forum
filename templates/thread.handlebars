@@ -1,14 +1,7 @@
-<h1>iOS development</h1>
-{{#each this}}
-    <div id="{{title}}">
-        <h5>{{title}}</h5>
-        {{#each posts}}
-            <div>{{title}}</div>
-            <div>{{content}}</div>
-            <div>{{author}}</div>
-            <div>{{rating}}</div>
-            <div>{{date}}</div>
-
-        {{/each}}
+<h1>{{categoryName}} Development</h1>
+{{#each data}}
+    <div class="container">
+        <a href="/#/ios/{{_id}}" id="{{title}}">{{title}}</a>
+        <h5>{{question}}</h5>
     </div>
 {{/each}}

@@ -15,6 +15,7 @@ class ThreadData {
 
     addNewQuestion(data) {
         let url = `https://baas.kinvey.com/appdata/${kinveyConst.APP_ID}/${data.threadCategory}`;
+        // TODO make the post class
         let newPost = {
             title: data.postTitle,
             question: data.postQuestion,
@@ -24,8 +25,8 @@ class ThreadData {
             'Authorization': `Kinvey ${localStorage.authKey}`,
             'ContentType': 'application/json',
         };
-        console.log(data);
-        requester.post(url, {
+
+        return requester.post(url, {
             headers: headers,
             data: newPost
         });
