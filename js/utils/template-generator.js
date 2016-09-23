@@ -1,20 +1,15 @@
 import Handlebars from 'handlebars'
 
-const cache = {};
+// Caching is deleted because it causes trouble when loading specific questions in already selected and rendered thread
 
 function loadTemplate(templateName) {
     let templateUrl = `../templates/${templateName}.handlebars`;
+
     return new Promise(function (resolve, reject) {
-
-        // if (cache[templateName]) {
-        //     resolve(cache[templateName])
-        // }
-
         $.ajax({
             url: templateUrl,
             success: function (data) {
                 let template = Handlebars.compile(data);
-                // cache[templateName] = template;
                 resolve(template);
             },
             error: function (err) {

@@ -23,7 +23,6 @@ class ThreadController {
                     categoryName: threadName
                 };
                 localStorage.setItem('threadData', JSON.stringify(data));
-                // console.log(JSON.parse(localStorage.threadData));
                 mainContainer.html(htmlTemplate(data));
             })
             .catch(function () {
@@ -66,8 +65,16 @@ class ThreadController {
                 let threadData = JSON.parse(localStorage.threadData);
                 let urlId = context.params.id;
                 let questiondData = threadData.data.find(element=>element._id === urlId);
-                console.log(questiondData);
+                localStorage.setItem("currentQuestion", JSON.stringify(questiondData));
                 mainContainer.html(htmlContent(questiondData));
+            })
+            .then(function (d) {
+                $('#btn-post-response').on('click', function () {
+                    let responseContent = $('#post-response-content').val();
+                    console.log(responseContent);
+                    threadData.addResponse(responseContent);
+                    // then
+                })
             })
     }
 
