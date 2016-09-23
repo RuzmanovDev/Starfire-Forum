@@ -14,6 +14,7 @@ const sammyApp = Sammy(wrapper, function () {
     this.get('#/login', userController.login);
 
     this.get('#/home', threadController.home);
+    this.get('#/askQuestion', threadController.askQuestion);
 
     //     function () {
     //     // vizmam kategoriqta, posle tarsq v neq kolekciq koqto ima imeto koeto e caknkano sled tova vadq idto na tazi kolekicq i pravq zavakite

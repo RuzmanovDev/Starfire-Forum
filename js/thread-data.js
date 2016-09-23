@@ -13,6 +13,23 @@ class ThreadData {
         return requester.get(url, {headers: headers})
     }
 
+    addNewQuestion(data) {
+        let url = `https://baas.kinvey.com/appdata/${kinveyConst.APP_ID}/${data.threadCategory}`;
+        let newPost = {
+            title: data.postTitle,
+            question: data.postQuestion,
+            posts: []
+        };
+        let headers = {
+            'Authorization': `Kinvey ${localStorage.authKey}`,
+            'ContentType': 'application/json',
+        };
+        console.log(data);
+        requester.post(url, {
+            headers: headers,
+            data: newPost
+        });
+    }
 }
 
 const threadData = new ThreadData();

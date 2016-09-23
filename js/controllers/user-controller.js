@@ -72,6 +72,8 @@ class UserController {
                 console.log(errorLog);
             });
     }
+
+
 }
 
 
