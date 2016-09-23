@@ -15,7 +15,7 @@ class ThreadController {
     }
 
     showThread(threadName) {
-        Promise.all([templateGenerator.load(threadName), threadData.getThread(threadName)])
+        Promise.all([templateGenerator.load('thread'), threadData.getThread(threadName)])
             .then(function ([htmlTemplate,data]) {
                 console.log(data);
                 mainContainer.html(htmlTemplate(data));

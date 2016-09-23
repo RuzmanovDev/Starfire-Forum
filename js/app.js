@@ -25,6 +25,7 @@ const sammyApp = Sammy(wrapper, function () {
     // });
 
     this.get('#/ios', ()=> threadController.showThread('ios'));
+    this.get('#/javascript', ()=> threadController.showThread('javascript'));
     this.get('#/logout', userController.logout);
 
     this.get('#/', threadController.home);
