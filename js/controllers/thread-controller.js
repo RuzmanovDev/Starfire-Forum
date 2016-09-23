@@ -27,7 +27,7 @@ class ThreadController {
                 mainContainer.html(htmlTemplate(data));
             })
             .catch(function () {
-                notifier.error("You must be logged in in order to view to threads!")
+                notifier.error("You must be logged in in order to view the threads!")
             })
     }
 
@@ -62,8 +62,12 @@ class ThreadController {
     showQuestion(context) {
         templateGenerator.load('selected-question')
             .then(function (htmlContent) {
-                let data = JSON.parse(localStorage.threadData);
-                mainContainer.html(htmlContent(data));
+
+                let threadData = JSON.parse(localStorage.threadData);
+                let urlId = context.params.id;
+                let questiondData = threadData.data.find(element=>element._id === urlId);
+                console.log(questiondData);
+                mainContainer.html(htmlContent(questiondData));
             })
     }
 
