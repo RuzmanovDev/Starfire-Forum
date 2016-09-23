@@ -18,7 +18,8 @@ SystemJS.config({
         'requester': 'js/utils/requester.js',
         // controllers
         'user-controller': 'js/controllers/user-controller.js',
-        'thread-controller': 'js/controllers/thread-controller.js'
+        'thread-controller': 'js/controllers/thread-controller.js',
+        'thread-data' :'js/thread-data.js'
     }
 });
 
