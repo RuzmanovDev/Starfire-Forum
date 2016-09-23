@@ -9,10 +9,12 @@ const wrapper = '#wrapper';
 // console.log(kinveyConst);
 
 const sammyApp = Sammy(wrapper, function () {
+    // User handling routes
     this.get('#/register', userController.register);
-
     this.get('#/login', userController.login);
+    this.get('#/logout', userController.logout);
 
+    // navigation routes
     this.get('#/home', threadController.home);
     this.get('#/askQuestion', threadController.askQuestion);
 
@@ -25,11 +27,11 @@ const sammyApp = Sammy(wrapper, function () {
     //
     // });
 
+    // Categories routes
     this.get('#/ios', ()=> threadController.showThread('ios'));
-    this.get('#/ios/:id', threadController.showQuestion);
-
     this.get('#/javascript', ()=> threadController.showThread('javascript'));
-    this.get('#/logout', userController.logout);
+
+    this.get('#/:id', threadController.showQuestion);
 
     this.get('#/', threadController.home);
 });

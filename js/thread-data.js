@@ -19,7 +19,8 @@ class ThreadData {
         let newPost = {
             title: data.postTitle,
             question: data.postQuestion,
-            posts: []
+            posts: [],
+            author: localStorage.username
         };
         let headers = {
             'Authorization': `Kinvey ${localStorage.authKey}`,
