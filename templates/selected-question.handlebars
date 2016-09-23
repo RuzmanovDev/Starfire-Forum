@@ -1,0 +1,17 @@
+<h1>{{categoryName}} </h1>
+{{#each data}}
+    <div>
+        <h5>{{title}}</h5>
+        <p>{{question}}</p>
+    </div>
+
+    {{#each posts}}
+        <div>
+            <h5>TITLE: {{title}}</h5>
+            <p>{{content}}</p>
+            <p>{{author}}</p>
+            <p>{{date}}</p>
+            <a>Rating: {{rating}}</a>
+        </div>
+    {{/each}}
+{{/each}}

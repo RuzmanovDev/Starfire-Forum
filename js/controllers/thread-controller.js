@@ -22,6 +22,8 @@ class ThreadController {
                     data: data,
                     categoryName: threadName
                 };
+                localStorage.setItem('threadData', JSON.stringify(data));
+                // console.log(JSON.parse(localStorage.threadData));
                 mainContainer.html(htmlTemplate(data));
             })
             .catch(function () {
@@ -57,9 +59,14 @@ class ThreadController {
             })
     }
 
-    showQuestion(context){
-        mainContainer.html("WOHOO");
+    showQuestion(context) {
+        templateGenerator.load('selected-question')
+            .then(function (htmlContent) {
+                let data = JSON.parse(localStorage.threadData);
+                mainContainer.html(htmlContent(data));
+            })
     }
+
     all() {
 
     }
