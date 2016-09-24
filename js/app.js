@@ -20,6 +20,7 @@ const sammyApp = Sammy(wrapper, function () {
     // Categories routes
     this.get('#/ios', ()=> threadController.showThread('ios'));
     this.get('#/javascript', ()=> threadController.showThread('javascript'));
+    this.get('#/csharp', ()=> threadController.showThread('csharp'));
 
     this.get('#/:id', threadController.showQuestion);
 
