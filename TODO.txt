@@ -1,3 +1,7 @@
 Encrypt Password
 Find bootstrap theme
-Write Templates 
+Write Templates
+
+Add third party api
+add search functionality
+add comments rating functionality
