@@ -1,20 +1,25 @@
 <h1>{{title}} </h1>
-
-<div>
-    <h5>{{title}}</h5>
-    <p>{{question}}</p>
-</div>
-
-{{#each posts}}
-    <div>
-        <h5>TITLE: {{title}}</h5>
-        <p>{{content}}</p>
-        <p>{{author}}</p>
-        <p>{{date}}</p>
-        <a>Rating: {{rating}}</a>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Title: {{title}}</h3>
     </div>
-    <br/>    <br/>
-
+    <div class="panel-body">
+        {{question}}
+    </div>
+</div>
+{{#each posts}}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            by: {{author}}
+        </div>
+        <div class="panel-body">
+            {{content}}
+        </div>
+        <div class="panel-footer">
+            <p>Posted on: {{date}}</p>
+            <a>Rating: {{rating}}</a>
+        </div>
+    </div>
 {{/each}}
 
 <h3>Add new Post</h3>
