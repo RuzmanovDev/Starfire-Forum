@@ -1,25 +1,29 @@
-<h1>Ask question</h1>
-<div class="form-group row">
-    <label for="example-text-input" class="col-xs-2 col-form-label">Thread Category</label>
-    <div class="col-xs-10">
-        <select id="thread-category">
-            <option value="ios">iOS development</option>
-            <option value="javascript">Javascript development</option>
-        </select>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="example-text-input" class="col-xs-2 col-form-label">Post title</label>
-    <div class="col-xs-10">
-        <input class="input-group" id="post-title"/>
-    </div>
-</div>
-<div class="form-group row">
-    <label for="example-text-input" class="col-xs-2 col-form-label">Post content</label>
-    <div class="col-xs-10">
-        <textarea id="post-content">
+<form class="form-horizontal">
+    <fieldset>
+        <legend>Ask Question</legend>
+        <div class="form-group">
+            <label for="example-text-input" class="col-lg-2 control-label">Thread Category</label>
+            <div class="col-lg-10">
+                <select id="thread-category" class="form-control">
+                    <option value="ios">iOS development</option>
+                    <option value="javascript">Javascript development</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="col-lg-2 control-label">Title</label>
+            <div class="col-lg-10">
+                <input class="form-control" id="post-title"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="example-text-input" class="col-lg-2 control-label">Post content</label>
+            <div class="col-xs-10">
+                <textarea id="post-content" class="form-control">
 
-    </textarea>
-        <button id="add-post-btn" class="btn btn-default">Add post</button>
-    </div>
-</div>
+                </textarea>
+                <button id="add-post-btn" class="btn btn-default">Add post</button>
+            </div>
+        </div>
+    </fieldset>
+</form>
