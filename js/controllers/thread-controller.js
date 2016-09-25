@@ -5,7 +5,10 @@ import {threadData} from 'thread-data'
 
 const mainContainer = $('#wrapper');
 
-function rateCommentUp() {
+function getDateOfComment(date){
+
+}
+function rateCommentUp(questionData) {
     $('#comments-container').on('click', '.rate-comment-up', function () {
         let $this = $(this);
         let $rating = $this.siblings('.rating-value');
@@ -15,7 +18,7 @@ function rateCommentUp() {
     })
 }
 
-function rateCommentDown() {
+function rateCommentDown(questionData) {
     $('#comments-container').on('click', '.rate-comment-down', function () {
         let $this = $(this);
         let $rating = $this.siblings('.rating-value');
@@ -24,6 +27,7 @@ function rateCommentDown() {
         $rating.text(`${currentRating -= 1}`);
     })
 }
+
 class ThreadController {
     home() {
         templateGenerator.load('home')
@@ -88,14 +92,22 @@ class ThreadController {
                 mainContainer.html(htmlContent(data));
             })
             .then(function () {
-                rateCommentUp();
-                rateCommentDown();
+                rateCommentUp(questionData);
+                rateCommentDown(questionData);
             })
             .then(function () {
+                $('#btn-add-response').on('click', function () {
+                    let $this = $(this);
+                    $this.toggle();
+
+                    $('#add-new-post').toggle();
+                });
+
                 $('#btn-post-response').on('click', function () {
                     let responseContentContainer = $('#post-response-content');
                     let responseContent = responseContentContainer.val();
                     responseContentContainer.val("");
+
                     localStorage.setItem('currentQuestionId', JSON.stringify(urlId));
                     threadData.addResponse(responseContent)
                         .then(function () {

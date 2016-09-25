@@ -3,8 +3,6 @@
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h3 class="panel-title">by: {{autor}}</h3>
-            <button class="btn-sm btn-success rate-comment-up">+</button>
-            <button class="btn-sm btn-danger rate-comment-down">-</button>
         </div>
         <div class="panel-body">
             {{question}}
@@ -29,9 +27,11 @@
         </div>
     {{/each}}
 </div>
-
-<h3>Add new Post</h3>
-<div>
-    <textarea id="post-response-content"></textarea>
-    <button class="btn btn-default" id="btn-post-response">Post response</button>
+<button class="btn btn-default" id="btn-add-response">Post response</button>
+<div id="add-new-post" style="display: none">
+    <h3>Add new Post</h3>
+    <div>
+        <textarea id="post-response-content"></textarea>
+        <button class="btn btn-default" id="btn-post-response">Post response</button>
+    </div>
 </div>

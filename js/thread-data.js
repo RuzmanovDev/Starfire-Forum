@@ -3,7 +3,6 @@ import {kinveyConst} from 'kinvey-constants'
 import {Post} from 'js/models/post.js'
 
 
-
 class ThreadData {
     getThread(threadName) {
         let url = `https://baas.kinvey.com/appdata/${kinveyConst.APP_ID}/${threadName}`;
@@ -17,7 +16,7 @@ class ThreadData {
 
     addNewQuestion(data) {
         let url = `https://baas.kinvey.com/appdata/${kinveyConst.APP_ID}/${data.threadCategory}`;
-        // TODO make the post class
+        // TODO make the question class
         let newPost = {
             title: data.postTitle,
             question: data.postQuestion,
@@ -70,6 +69,14 @@ class ThreadData {
         };
 
         return requester.get(url, {headers: headers})
+    }
+
+    rateCommentUp() {
+
+    }
+
+    rateCommentDown() {
+
     }
 }
 
