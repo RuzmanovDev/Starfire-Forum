@@ -5,6 +5,25 @@ import {threadData} from 'thread-data'
 
 const mainContainer = $('#wrapper');
 
+function rateCommentUp() {
+    $('#comments-container').on('click', '.rate-comment-up', function () {
+        let $this = $(this);
+        let $rating = $this.siblings('.rating-value');
+        let currentRating = +$rating.text();
+
+        $rating.text(`${currentRating += 1}`);
+    })
+}
+
+function rateCommentDown() {
+    $('#comments-container').on('click', '.rate-comment-down', function () {
+        let $this = $(this);
+        let $rating = $this.siblings('.rating-value');
+        let currentRating = +$rating.text();
+
+        $rating.text(`${currentRating -= 1}`);
+    })
+}
 class ThreadController {
     home() {
         templateGenerator.load('home')
@@ -69,6 +88,10 @@ class ThreadController {
                 mainContainer.html(htmlContent(data));
             })
             .then(function () {
+                rateCommentUp();
+                rateCommentDown();
+            })
+            .then(function () {
                 $('#btn-post-response').on('click', function () {
                     let responseContentContainer = $('#post-response-content');
                     let responseContent = responseContentContainer.val();
@@ -77,7 +100,6 @@ class ThreadController {
                     threadData.addResponse(responseContent)
                         .then(function () {
                             notifier.success("Post added!");
-
                             context.redirect(`#/${urlId}`);
                         })
                         .catch(function (errorLog) {
