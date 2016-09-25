@@ -9,7 +9,6 @@ class ThreadController {
     home() {
         templateGenerator.load('home')
             .then(function (htmlContent) {
-
                 mainContainer.html(htmlContent);
             });
     }
@@ -18,12 +17,12 @@ class ThreadController {
         Promise.all([templateGenerator.load('thread'), threadData.getThread(threadName)])
             .then(function ([htmlTemplate,data]) {
                 // in order to make the thread template generic we need to add the thread name to the data object
-                data = {
+                let dataWithCategoryName = {
                     data: data,
                     categoryName: threadName
                 };
-                localStorage.setItem('threadData', JSON.stringify(data));
-                mainContainer.html(htmlTemplate(data));
+                localStorage.setItem('threadData', JSON.stringify(dataWithCategoryName));
+                mainContainer.html(htmlTemplate(dataWithCategoryName));
             })
             .catch(function () {
                 notifier.error("You must be logged in in order to view the threads!")
@@ -59,35 +58,48 @@ class ThreadController {
     }
 
     showQuestion(context) {
-        templateGenerator.load('selected-question')
-            .then(function (htmlContent) {
-                let threadData = JSON.parse(localStorage.threadData);
-                let urlId = context.params.id;
-                let questiondData = threadData.data.find(element=>element._id === urlId);
+        let threadContent = JSON.parse(localStorage.threadData);
+        let urlId = context.params.id;
+        let categoryName = threadContent.categoryName;
 
-                localStorage.setItem("currentQuestion", JSON.stringify(questiondData));
-                mainContainer.html(htmlContent(questiondData));
+        let questionData = threadData.getQuestionById(urlId, categoryName);
+
+        Promise.all([questionData, templateGenerator.load('selected-question')])
+            .then(function ([data,htmlContent]) {
+                mainContainer.html(htmlContent(data));
             })
             .then(function () {
                 $('#btn-post-response').on('click', function () {
                     let responseContentContainer = $('#post-response-content');
                     let responseContent = responseContentContainer.val();
                     responseContentContainer.val("");
+                    localStorage.setItem('currentQuestionId', JSON.stringify(urlId));
                     threadData.addResponse(responseContent)
                         .then(function () {
                             notifier.success("Post added!");
+
+                            context.redirect(`#/${urlId}`);
                         })
                         .catch(function (errorLog) {
                             notifier.error("The post wasn't added! Please try again!");
                             console.log(errorLog)
                         })
-
                 })
+            })
+            .catch(function (errorLog) {
+                notifier.error('Error has occurred please try again!');
+                console.log(errorLog);
             })
     }
 
+    addResponse() {
+
+    }
 }
 
-const threadController = new ThreadController();
+const
+    threadController = new ThreadController();
 
-export {threadController};
+export {
+    threadController
+}
