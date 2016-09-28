@@ -4,38 +4,30 @@
     <meta charset="UTF-8">
     <title>Forum</title>
 
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!--css tor libs-->
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/toastr/toastr.min.css"/>
-    <link rel="stylesheet" type="text/css" href="styles/prettyPhoto.css "/>
-    <link rel="apple-touch-icon-precomposed" href="styles/font-awesome.min.css"/>
-
-    <!--Theme CSS-->
-
+    <link rel="stylesheet" type="text/css" href="resources/public/css/main.css">
 </head>
 <body>
-<header class="nav navbar container">
-    <div class="container">
-        <h1 class="text-center">Team Starfire Dev World</h1>
-    </div>
-    <nav class="navbar navbar-default row">
-        <ul class="nav navbar-nav col-md-12 row">
-            <li><a href="#/home">Home</a></li>
-            <li><a href="#/askQuestion">Start new discussion</a></li>
-            <li><a href="#/login">Login</a></li>
-            <li><a href="#/register">Register</a></li>
-            <li><a href="#/logout">Logout</a></li>
-        </ul>
-    </nav>
-</header>
-<div id="wrapper" class="container">
+    <header>
+        <div class="container title-container">
+            <h1 class="text-center">Team Starfire Dev World</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#/home">Home</a></li>
+                <li><a href="#/askQuestion">Start new discussion</a></li>
+                <li><a href="#/login">Login</a></li>
+                <li><a href="#/register">Register</a></li>
+                <li><a href="#/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
 
-</div>
-<script src="node_modules/systemjs/dist/system.js"></script>
-<script src="bower_components/crypto-js/crypto-js.js"></script>
-<script src="./systemjs-config.js"></script>
+    <div id="wrapper"></div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/systemjs/dist/system.js"></script>
+    <script src="bower_components/crypto-js/crypto-js.js"></script>
+
+    <script src="./systemjs-config.js"></script>
 </body>
 </html>

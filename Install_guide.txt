@@ -1,0 +1,18 @@
+-------------------------------------------------
+Team-Starfire app install guide
+-------------------------------------------------
+
+1. Install node (https://nodejs.org/en/download/)
+2. Install bower using npm (npm install bower)
+
+3. Open a terminal and navigate to project folder:
+	- run "npm install && bower install"
+
+4. Wait for the above operation to finish and run a local server to view the app in browser
+
+-------------------------------------------------
+
+Not mandatory on initial install
+
+	Retranspile styles:
+		- Navigate to project folder: and run "grunt less"

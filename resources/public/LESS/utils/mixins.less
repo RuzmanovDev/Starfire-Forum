@@ -1,0 +1,166 @@
+/*
+	---------------------------------------------------
+		LESS Mixins v2.1
+	---------------------------------------------------
+
+		Author: Ivan Bozhkov
+
+	---------------------------------------------------
+*/
+
+.gradient(@start: #eee, @stop: #fff, @color: #f5f5f5, @deg: 0deg) {
+    background: @color;
+    background: -webkit-linear-gradient(@deg, @start, @stop);
+    background:     -ms-linear-gradient(@deg, @start, @stop);
+    background:    -moz-linear-gradient(@deg, @start, @stop);
+    background:      -o-linear-gradient(@deg, @start, @stop);
+
+    filter: ~'progid:DXImageTransform.Microsoft.gradient(startColorstr=\"{@stop}\", endColorstr=\"{@start}\", GradientType=0)';
+
+    filter: ~'progid:DXImageTransform.Microsoft.gradient(enabled=false)';
+
+    behaviour: url(assets/polyfills/PIE.htc);
+}
+.double-gradient(@first-color-start: #eee, @first-color-stop: #fff, @second-color-start: #eee, @second-color-stop: #fff, @deg: 0deg, @color: #eee) {
+    background: @color; /* Old browsers */
+    background:    -moz-linear-gradient(@deg, @first-color-start 0%, @first-color-stop 50%,  @second-color-start 50%, @second-color-stop 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(@deg, @first-color-start 0%,@first-color-stop 50%, @second-color-start 50%,@second-color-stop 100%); /* Chrome10+,Safari5.1+ */
+    background:      -o-linear-gradient(@deg, @first-color-start 0%,@first-color-stop 50%, @second-color-start 50%,@second-color-stop 100%); /* Opera 11.10+ */
+    background:     -ms-linear-gradient(@deg, @first-color-start 0%,@first-color-stop 50%, @second-color-start 50%,@second-color-stop 100%); /* IE10+ */
+    background:         linear-gradient(@deg, @first-color-start 0%,@first-color-stop 50%, @second-color-start 50%,@second-color-stop 100%); /* W3C */
+
+    filter: none;
+    filter: ~'progid:DXImageTransform.Microsoft.gradient(startColorstr=\"{@first-color-start}\", endColorstr=\"{@first-color-stop}\", GradientType=0)';
+
+    behaviour: url(assets/polyfills/PIE.htc);
+}
+.border(@top-color: #eee, @right-color: #eee, @bottom-color: #eee, @left-color: #eee) {
+    border-top: solid 1px @top-color;
+    border-right: solid 1px @right-color;
+    border-bottom: solid 1px @bottom-color;
+    border-left: solid 1px @left-color;
+}
+.drop-shadow(@x-axis: 0, @y-axis: 1px, @smudge: 2px, @alpha: .1) {
+    -webkit-box-shadow: @x-axis @y-axis @smudge rgba(0, 0, 0, @alpha);
+       -moz-box-shadow: @x-axis @y-axis @smudge rgba(0, 0, 0, @alpha);
+            box-shadow: @x-axis @y-axis @smudge rgba(0, 0, 0, @alpha);
+}
+.round(@radius: 2px) {
+    -webkit-border-radius: @radius;
+       -moz-border-radius: @radius;
+            border-radius: @radius;
+}
+.border-radius(@top-right: 0, @bottom-right: 0, @bottom-left: 0, @top-left: 0) {
+    -webkit-border-top-left-radius: @top-left;
+    -moz-border-radius-topleft: @top-left;
+            border-top-left-radius: @top-left;
+    -webkit-border-top-right-radius: @top-right;
+    -moz-border-radius-topright: @top-right;
+            border-top-right-radius: @top-right;
+    -webkit-border-bottom-right-radius: @bottom-right;
+    -moz-border-radius-bottomright: @bottom-right;
+            border-bottom-right-radius: @bottom-right;
+    -webkit-border-bottom-left-radius: @bottom-left;
+    -moz-border-radius-bottomleft: @bottom-left;
+            border-bottom-left-radius: @bottom-left;
+
+    .background-clip();
+}
+.opacity(@opacity: .5) {
+    zoom: 1; // activate hasLayout
+
+            opacity: @opacity;
+
+     -khtml-opacity: @opacity;
+    -webkit-opacity: @opacity;
+       -moz-opacity: @opacity;
+}
+.background-size(@args: cover) {
+    background-size: @args;
+
+    -ms-behavior: url(assets/polyfills/backgroundsize.min.htc);
+}
+.transform(@args) {
+    -webkit-transform: @args;
+       -moz-transform: @args;
+        -ms-transform: @args;
+         -o-transform: @args;
+            transform: @args;
+}
+.rotate(@deg:5deg) {
+    .transform(rotate(@deg));
+}
+.scale(@ratio:1.5) {
+    .transform(scale(@ratio));
+}
+.transition(@duration: .2s, @ease:ease-out) {
+    -webkit-transition: all @duration @ease;
+       -moz-transition: all @duration @ease;
+         -o-transition: all @duration @ease;
+            transition: all @duration @ease;
+}
+.inner-shadow(@horizontal:0, @vertical:1px, @blur:2px, @alpha: .4) {
+    -webkit-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+       -moz-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+            box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+}
+.box-shadow(@arguments) {
+    -webkit-box-shadow: @arguments;
+       -moz-box-shadow: @arguments;
+            box-shadow: @arguments;
+}
+.box-sizing(@sizing: border-box) {
+    -webkit-box-sizing: @sizing;
+       -moz-box-sizing: @sizing;
+        -ms-box-sizing: @sizing;
+            box-sizing: @sizing;
+}
+.translate(@x:0, @y:0) {
+    .transform(translate(@x, @y));
+}
+.background-clip(@argument: padding-box) {
+    -webkit-background-clip: @argument;
+       -moz-background-clip: @argument;
+            background-clip: @argument;
+}
+.size(@width: 5px, @height: 5px) {
+    width: @width;
+    height: @height;
+}
+.square(@size: 5px) {
+    .size(@size, @size);
+}
+.circle(@size: 5px) {
+    .round(@size);
+    .square(@size);
+}
+.include-font(@family: Arial Bold, @clean-name: @family) {
+    @font-face {
+        font-family: @family;
+        src: url("@{path_fonts}@{clean-name}/@{clean-name}.eot");
+        src: url("@{path_fonts}@{clean-name}/@{clean-name}.eot?#iefix") format("embedded-opentype"),
+        url("@{path_fonts}@{clean-name}/@{clean-name}.woff") format("woff"),
+        url("@{path_fonts}@{clean-name}/@{clean-name}.ttf") format("truetype"),
+        url("@{path_fonts}@{clean-name}/@{clean-name}.svg#icon") format("svg");
+    }
+}
+.get-icon-code(@iconData, @key, @fallback...) {
+    .-(length(@iconData));
+    .-(@i) when (@i > 0) {.-((@i - 1))}
+    .-(@i) when (@key = extract(extract(@iconData, @i), 1)) {
+        @get-icon-code: extract(extract(@iconData, @i), 2);
+        content : @get-icon-code;
+    }
+
+    .--() {@get-icon-code: @fallback} .--;
+}
+
+.make-icons(@iconData, @i:1) when(@i <= length(@iconData)) {
+    @name: extract(extract(@iconData, @i),1);
+    &@{name} {
+        &::before {
+            .get-icon-code(@iconData, @name);
+        }
+    }
+    .make-icons(@iconData, (@i + 1));
+}

@@ -1,0 +1,41 @@
+/*
+    ----------------------------------------------------------
+    Team-Starfire App
+    ----------------------------------------------------------
+
+    Module :  MAIN THEME FILE
+
+    Authors : Ivan Bozhkov,
+
+    ----------------------------------------------------------
+    ----------------------------------------------------------
+*/
+
+
+
+/*    ---> PATHS <---    */
+@path_images : "../images/";
+@path_fonts  : "../fonts/";
+
+
+
+/*    ---> COLORS <---    */
+@color_main            : #0076fe; // [ only used 4 inheritance
+@color_main_darker     : #005fcc;
+@color_main_dark       : #212121;
+@color_main_bright     : #fff;
+@color_secondary_gray  : #878787;
+@color_secondary_green : #00c120;
+@color_secondary_red   : #e50d0e;
+@color_shadow_base     : #000;
+@color_bright_bgs      : #f0f0f0; // ]
+
+// text-related
+@color_text_main_dark        : fade(@color_main_dark, 87%);
+@color_text_secondary_dark   : fade(@color_main_dark, 54%);
+@color_text_caption_dark     : fade(@color_main_dark, 32%);
+@color_text_main_bright      : fade(@color_main_bright, 100%);
+@color_text_secondary_bright : fade(@color_main_bright, 70%);
+@color_text_caption_bright   : fade(@color_main_bright, 30%);
+@color_text_success          : @color_secondary_green;
+@color_text_danger           : @color_secondary_red;
