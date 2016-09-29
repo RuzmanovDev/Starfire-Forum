@@ -1,0 +1,90 @@
+.btn {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    padding: 12px 15px;
+    margin: 0;
+
+    font-family: @font_main_regular;
+    font-size: @size_text;
+    line-height: 1;
+
+    cursor: pointer;
+    transition: ~"all @{transition_default}";
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    opacity: 1 !important;
+    border: 0;
+    border-radius: @border_radius_default;
+    outline: none;
+
+    &,
+    &.flat {
+        color: @color_main_dark;
+        background: transparent;
+
+        &:hover {
+            background: fade(@color_main_dark, 18%);
+        }
+        &[disabled] {
+            color: fade(@color_main_bright, 70%);
+            // background: fade(@color_main, 70%);
+        }
+    }
+
+    &.raised {
+        color: @color_text_main_dark;
+        background: @color_main_bright;
+        box-shadow: @shadow_small;
+
+        &:hover {
+            box-shadow: @shadow_base;
+        }
+        &:active {
+            box-shadow: @shadow_big;
+        }
+        &[disabled] {
+            color: fade(@color_main_bright, 70%);
+            box-shadow: @shadow_small, 70%;
+        }
+
+        &.primary {
+            color: @color_main_bright;
+            background: @color_main;
+
+            &:hover {
+                color: @color_main_bright;
+                background: @color_main;
+                box-shadow: @shadow_base;
+            }
+            &:active {
+                color: @color_main_bright;
+                background: @color_main;
+                box-shadow: @shadow_big;
+            }
+            &[disabled] {
+                color: fade(@color_main_bright, 70%);
+                background: fade(@color_main, 70%);
+                box-shadow: @shadow_small, 70%;
+            }            
+        }
+    }
+
+    &.link {
+        text-transform: none;
+
+        color: @color_main;
+        background: transparent;
+
+        &:hover {
+            text-decoration: underline;
+        }
+        &[disabled] {
+            text-decoration: none !important;
+
+            color: fade(@color_main, 70%);
+        }
+    }
+}

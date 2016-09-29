@@ -60,6 +60,17 @@
 @font_main_bold     : OpenSans-Bold;
 
 /*    ---> SHADOWS <---    */
-@shadow_base  : 0px 5px 10px fade(@color_shadow_base, 30%);
-@shadow_small : 0px 2px 3px fade(@color_shadow_base, 20%);
-@shadow_big   : ~"@{shadow_small}, 0px 7px 12px fade(@color_shadow_base, 30%)";
+@shadow_base  : 0px 5px 10px fade(@color_shadow_base, 50%);
+@shadow_small : 0px 2px 3px fade(@color_shadow_base, 30%);
+@shadow_big   : ~"@{shadow_base}", 0px 7px 12px fade(@color_shadow_base, 10%);
+
+/*    ---> TRANSITIONS <---    */
+@transition_speed         : .3s;
+@transition_fastspeed     : .1s;
+@transition_type          : linear;
+@transition_bouncetype    : cubic;
+@transition_default       : ~"@{transition_speed} @{transition_type}";
+@transition_default_cubic : ~"@{transition_fastspeed} @{transition_bouncetype}";
+
+/*    ---> BORDER RADIUS <---    */
+@border_radius_default : 3px;
