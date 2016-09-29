@@ -22,9 +22,12 @@ const sammyApp = Sammy(wrapper, function () {
     this.get('#/javascript', ()=> threadController.showThread('javascript'));
     this.get('#/csharp', ()=> threadController.showThread('csharp'));
 
+    this.get('#/components', threadController.components);
+
     this.get('#/:id', threadController.showQuestion);
 
     this.get('#/', threadController.home);
+
 });
 
 sammyApp.run('#/');

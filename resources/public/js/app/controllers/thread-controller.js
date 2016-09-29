@@ -36,6 +36,13 @@ class ThreadController {
             });
     }
 
+    components() {
+        templateGenerator.load('components','index')
+            .then(function (htmlContent) {
+                mainContainer.html(htmlContent);
+            });
+    }
+
     showThread(threadName) {
         Promise.all([templateGenerator.load('thread', 'read'), threadData.getThread(threadName)])
             .then(function ([htmlTemplate,data]) {

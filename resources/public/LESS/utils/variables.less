@@ -20,15 +20,16 @@
 
 
 /*    ---> COLORS <---    */
-@color_main            : #0076fe; // [ only used 4 inheritance
-@color_main_darker     : #005fcc;
-@color_main_dark       : #212121;
-@color_main_bright     : #fff;
-@color_secondary_gray  : #878787;
-@color_secondary_green : #00c120;
-@color_secondary_red   : #e50d0e;
-@color_shadow_base     : #000;
-@color_bright_bgs      : #f0f0f0; // ]
+@color_main             : #0076fe; // [ only used 4 inheritance
+@color_main_darker      : #005fcc;
+@color_main_dark        : #212121;
+@color_main_bright      : #fff;
+@color_secondary_gray   : #878787;
+@color_secondary_green  : #00c120;
+@color_secondary_red    : #e50d0e;
+@color_secondary_yellow : #e5c90d;
+@color_shadow_base      : #000;
+@color_bright_bgs       : #f0f0f0; // ]
 
 // text-related
 @color_text_main_dark        : fade(@color_main_dark, 87%);
@@ -38,6 +39,7 @@
 @color_text_secondary_bright : fade(@color_main_bright, 70%);
 @color_text_caption_bright   : fade(@color_main_bright, 30%);
 @color_text_success          : @color_secondary_green;
+@color_text_warning          : @color_secondary_yellow;
 @color_text_danger           : @color_secondary_red;
 
 
@@ -56,3 +58,8 @@
 @font_main_light    : OpenSans-Light;
 @font_main_semibold : OpenSans-Semibold;
 @font_main_bold     : OpenSans-Bold;
+
+/*    ---> SHADOWS <---    */
+@shadow_base  : 0px 5px 10px fade(@color_shadow_base, 30%);
+@shadow_small : 0px 2px 3px fade(@color_shadow_base, 20%);
+@shadow_big   : ~"@{shadow_small}, 0px 7px 12px fade(@color_shadow_base, 30%)";
