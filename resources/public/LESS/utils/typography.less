@@ -1,0 +1,80 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    float: none;
+    width: 100%;
+    height: auto;
+
+    font-family: inherit;
+    font-weight: normal;
+    line-height: 1.2;
+}
+
+a {
+    text-decoration: none;
+}
+
+.big-title,
+.title,
+.sub-title,
+.caption,
+.text {
+    font-family: @font_main_regular;
+
+    color: @color_text_caption_dark;
+
+    &.light {
+        font-family: @font_main_light;
+    }
+    &.semibold {
+        font-family: @font_main_semibold;
+    }
+    &.bold {
+        font-family: @font_main_bold;
+    }
+
+    &.main {
+        color: @color_text_main_dark;
+    }
+    &.secondary {
+        color: @color_text_secondary_dark;
+    }
+    &.bright {
+        color: @color_text_caption_bright;
+
+        &.main {
+            color: @color_text_main_bright;
+        }
+        &.secondary {
+            color: @color_text_secondary_bright;
+        }
+    }
+
+    &.success {
+        color: @color_secondary_green;
+    }
+
+    &.error {
+        color: @color_secondary_red;
+    }
+}
+
+
+.big-title {
+    font-size: @size_big_title;
+}
+.title {
+    font-size: @size_title;
+}
+.sub-title {
+    font-size: @size_sub_title;
+}
+.text {
+    font-size: @size_text;
+}
+.caption {
+    font-size: @size_caption;
+}
