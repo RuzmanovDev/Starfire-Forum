@@ -12,7 +12,10 @@ class UserData {
 
         var theUser = {
             username: user.username,
-            password: user.password
+            password: user.password,
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName
         };
 
         return requester.post(url, {
