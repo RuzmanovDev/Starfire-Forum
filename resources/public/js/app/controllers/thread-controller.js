@@ -104,17 +104,17 @@ class ThreadController {
                 rateCommentDown(questionData);
             })
             .then(function () {
-                $('#btn-add-response').on('click', function () {
-                    let $this = $(this);
-                    $this.toggle();
-
-                    $('#add-new-post').toggle();
-                });
+                // $('#btn-add-response').on('click', function () {
+                //     let $this = $(this);
+                //     $this.toggle();
+                //
+                //     $('#add-new-post').toggle();
+                // });
 
                 $('#btn-post-response').on('click', function () {
                     let responseContentContainer = $('#post-response-content');
                     let responseContent = responseContentContainer.val();
-                    responseContentContainer.val("");
+                    responseContentContainer.val('');
 
                     localStorage.setItem('currentQuestionId', JSON.stringify(urlId));
                     threadData.addResponse(responseContent)

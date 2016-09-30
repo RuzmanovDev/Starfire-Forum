@@ -14,9 +14,12 @@ class UserController {
             .then(function () {
                 $('#btn-register').on('click', function () {
                     var username = $('#user-name').val(),
-                        password = $('#input-password').val();
+                        password = $('#input-password').val(),
+                        firstName = $('#user-first-name').val(),
+                        lastName = $('#user-last-name').val(),
+                        email = $('#user-email').val();
 
-                    let newUser = {username, password};
+                    let newUser = {username, password, firstName, lastName, email};
 
                     userData.register(newUser)
                         .then(function (user) {
@@ -70,14 +73,13 @@ class UserController {
             })
             .then(function (data) {
                 notifier.success(`You have logged out successfully!`);
-                context.redirect('#/login');
+                context.redirect('#/home');
             })
             .catch(function (errorLog) {
                 notifier.error(errorLog);
                 console.log(errorLog);
             });
     }
-
 
 }
 

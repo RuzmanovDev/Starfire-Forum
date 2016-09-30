@@ -40,7 +40,6 @@ class ThreadData {
         let currentQuestionId = JSON.parse(localStorage.currentQuestionId);
         // let currentQuestionID = currentQuestion._id;
         let threadData = JSON.parse(localStorage.threadData);
-
         let dataToUpdate;
         for (let array of threadData.data) {
             if (array._id === currentQuestionId) {
@@ -50,7 +49,7 @@ class ThreadData {
         }
         let url = `https://baas.kinvey.com/appdata/${kinveyConst.APP_ID}/${threadData.categoryName}/${currentQuestionId}`;
         let headers = {
-            'Authorization': `Kinvey ${localStorage.authKey}`,
+            'Authorization': `Basic ${kinveyConst.MASTER_KEY}`,
             'ContentType': 'application/json',
         };
 
