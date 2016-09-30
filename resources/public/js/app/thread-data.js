@@ -85,11 +85,15 @@ class ThreadData {
                 let indexOfelementToBeDeleted = data.posts.findIndex(function (element, index) {
                     return element._id === id;
                 });
+                if (data.posts[indexOfelementToBeDeleted].author !== localStorage.username) {
+                    throw new Error("The user can delete only his comments!");
+                }
+
                 data.posts.splice(indexOfelementToBeDeleted, 1);
 
                 let url = `https://baas.kinvey.com/appdata/${kinveyConst.APP_ID}/${categoryName}/${currentQuestionId}`;
                 let headers = {
-                    'Authorization': `Kinvey ${localStorage.authKey}`,
+                    'Authorization': `Basic ${kinveyConst.MASTER_KEY}`,
                     'ContentType': 'application/json',
                 };
 
@@ -99,29 +103,6 @@ class ThreadData {
                 });
 
             });
-        // return questionData
-        //     .then(function (data) {
-        //         let posts = data.posts;
-        //
-        //         let indexOfPostToDel = posts.findIndex(function (element, index) {
-        //             return element._id === id;
-        //         });
-        //
-        //         console.log(posts);
-        //         posts.splice(indexOfPostToDel, 1);
-        //         console.log(posts);
-        //
-        //         let url = `https://baas.kinvey.com/appdata/${kinveyConst.APP_ID}/${threadData.categoryName}/${currentQuestionId}`;
-        //         let headers = {
-        //             'Authorization': `Kinvey ${localStorage.authKey}`,
-        //             'ContentType': 'application/json',
-        //         };
-        //
-        //         return requester.put(url, {
-        //             headers: headers,
-        //             data: posts
-        //         });
-        //     })
     }
 }
 
