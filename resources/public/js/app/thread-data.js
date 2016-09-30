@@ -37,7 +37,6 @@ class ThreadData {
         let author = localStorage.username;
         let post = new Post(author, responseContent);
         let currentQuestionId = JSON.parse(localStorage.currentQuestionId);
-        // let currentQuestionID = currentQuestion._id;
         let threadData = JSON.parse(localStorage.threadData);
         let dataToUpdate;
         for (let array of threadData.data) {
@@ -69,12 +68,56 @@ class ThreadData {
         return requester.get(url, {headers: headers})
     }
 
-    rateCommentUp() {
+    rateCommentUp(id, questionData, categoryName) {
+        id = +id;
+        return questionData
+            .then(function (data) {
+                let currentQuestionId = data._id;
+                let indexOfCommentToBeUpdated = data.posts.findIndex(function (element, index) {
+                    return element._id === id;
+                });
+                let oldDRating = +data.posts[indexOfCommentToBeUpdated].rating;
 
+                data.posts[indexOfCommentToBeUpdated].rating = (oldDRating += 1);
+
+                let url = `https://baas.kinvey.com/appdata/${kinveyConst.APP_ID}/${categoryName}/${currentQuestionId}`;
+                let headers = {
+                    'Authorization': `Basic ${kinveyConst.MASTER_KEY}`,
+                    'ContentType': 'application/json',
+                };
+
+                return requester.put(url, {
+                    headers: headers,
+                    data: data
+                });
+
+            });
     }
 
-    rateCommentDown() {
+    rateCommentDown(id, questionData, categoryName) {
+        id = +id;
+        return questionData
+            .then(function (data) {
+                let currentQuestionId = data._id;
+                let indexOfCommentToBeUpdated = data.posts.findIndex(function (element, index) {
+                    return element._id === id;
+                });
+                let oldDRating = +data.posts[indexOfCommentToBeUpdated].rating;
 
+                data.posts[indexOfCommentToBeUpdated].rating = (oldDRating -= 1);
+
+                let url = `https://baas.kinvey.com/appdata/${kinveyConst.APP_ID}/${categoryName}/${currentQuestionId}`;
+                let headers = {
+                    'Authorization': `Basic ${kinveyConst.MASTER_KEY}`,
+                    'ContentType': 'application/json',
+                };
+
+                return requester.put(url, {
+                    headers: headers,
+                    data: data
+                });
+
+            });
     }
 
     deletePost(id, questionData, categoryName) {
