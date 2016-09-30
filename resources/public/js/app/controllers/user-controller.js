@@ -63,6 +63,11 @@ class UserController {
 
     logout(context) {
         userData.logout()
+            .then(function () {
+                localStorage.removeItem('username');
+                localStorage.removeItem('userId');
+                localStorage.removeItem('authKey');
+            })
             .then(function (data) {
                 notifier.success(`You have logged out successfully!`);
                 context.redirect('#/login');

@@ -3,8 +3,6 @@ import Handlebars from 'handlebars'
 // Caching is deleted because it causes trouble when loading specific questions in already selected and rendered thread
 
 function loadTemplate(page, templateName) {
-    console.log(page);
-    console.log(templateName);
     let templateUrl = `./resources/views/${page}/${templateName}.handlebars`;
 
     return new Promise(function (resolve, reject) {
