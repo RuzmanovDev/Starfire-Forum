@@ -19,6 +19,7 @@ SystemJS.config({
         'template-generator': './resources/public/js/app/utils/template-generator.js',
         'notifier': './resources/public/js/app/utils/notifier.js',
         'requester': './resources/public/js/app/utils/requester.js',
+        'validator': './resources/public/js/app/utils/validator.js',
 
         // controllers
         'user-controller': './resources/public/js/app/controllers/user-controller.js',
