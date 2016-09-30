@@ -1,8 +1,8 @@
 import toastr from 'toastr'
 
 class Validator {
-    static validateUser(user) {
-        var regex = /^[a-zA-Z0-9 ]{2,30}$/;
+    validateUser(user) {
+        var regex = /^[a-zA-Z0-9 ]{2,20}$/;
         if (!(regex.test(user))) {
             return false;
         }
@@ -10,15 +10,15 @@ class Validator {
         return true;
     }
 
-    static validatePassword(password) {
-        var regex = /^[A-Za-z0-9]\w{5,15}$/;
+    validatePassword(password) {
+        var regex = /^[A-Za-z0-9]\w{5,20}$/;
         if (!(regex.test(password))) {
             return false;
         }
         return true;
     }
 
-    static validateEmail(email) {
+    validateEmail(email) {
         var regex = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         if (!(regex.test(email))) {
             return false;

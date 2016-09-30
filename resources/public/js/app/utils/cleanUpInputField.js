@@ -2,7 +2,7 @@ import 'jquery'
 
 class Cleaner {
 
-    static cleanInputField(...inputs){
+    cleanInputField(...inputs){
         inputs.forEach(x => x.val(''));
     }
 }

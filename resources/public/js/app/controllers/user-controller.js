@@ -31,13 +31,13 @@ class UserController {
 
                     //validate correct username, password and e-mail
                     if(!validator.validateUser(username)){
-                        notifier.error('Username is not in the correct format!');
+                        notifier.error('Username must be between 5 and 20 symbols!');
                         cleaner.cleanInputField($username);
                         return;
                     }
 
                     if(!validator.validatePassword(password)){
-                        notifier.error('Password is not in the correct format!');
+                        notifier.error('Password must be between 5 and 20 symbols!');
                         cleaner.cleanInputField($password, $confirmPassword);
                         return;
                     }
@@ -85,13 +85,13 @@ class UserController {
 
                     //validate username and password
                     if(!validator.validateUser(username)){
-                        notifier.error('Username is not in the correct format!');
+                        notifier.error('Username must be between 5 and 20 symbols!');
                         cleaner.cleanInputField($username);
                         return;
                     }
 
                     if(!validator.validatePassword(password)){
-                        notifier.error('Password is not in the correct format!');
+                        notifier.error('Password must be between 5 and 20 symbols!');
                         cleaner.cleanInputField($password, $confirmPassword);
                         return;
                     }
