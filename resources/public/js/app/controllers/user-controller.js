@@ -2,8 +2,8 @@ import 'jquery'
 import {templateGenerator} from 'template-generator'
 import {notifier} from 'notifier'
 import {userData} from './../user-data.js'
-import { validator } from 'validator'
-import { cleaner } from 'cleaner'
+import {validator} from 'validator'
+import {cleaner} from 'cleaner'
 
 const mainContainer = $('#wrapper');
 
@@ -30,26 +30,26 @@ class UserController {
                         email = $email.val();
 
                     //validate correct username, password and e-mail
-                    if(!validator.validateUser(username)){
+                    if (!validator.validateUser(username)) {
                         notifier.error('Username must be between 5 and 20 symbols!');
                         cleaner.cleanInputField($username);
                         return;
                     }
 
-                    if(!validator.validatePassword(password)){
+                    if (!validator.validatePassword(password)) {
                         notifier.error('Password must be between 5 and 20 symbols!');
                         cleaner.cleanInputField($password, $confirmPassword);
                         return;
                     }
 
-                    if(!validator.validateEmail(email)){
+                    if (!validator.validateEmail(email)) {
                         notifier.error('E-mail is not valid!');
                         cleaner.cleanInputField($email);
                         return;
                     }
 
 
-                    if(password != confirmPassword){
+                    if (password != confirmPassword) {
                         notifier.error('Passwords do not match!');
                         cleaner.cleanInputField($password, $confirmPassword);
                         return;
@@ -84,13 +84,13 @@ class UserController {
                         password = $password.val();
 
                     //validate username and password
-                    if(!validator.validateUser(username)){
+                    if (!validator.validateUser(username)) {
                         notifier.error('Username must be between 5 and 20 symbols!');
                         cleaner.cleanInputField($username);
                         return;
                     }
 
-                    if(!validator.validatePassword(password)){
+                    if (!validator.validatePassword(password)) {
                         notifier.error('Password must be between 5 and 20 symbols!');
                         cleaner.cleanInputField($password, $confirmPassword);
                         return;
@@ -125,6 +125,8 @@ class UserController {
                 localStorage.removeItem('username');
                 localStorage.removeItem('userId');
                 localStorage.removeItem('authKey');
+                localStorage.removeItem('currentQuestionId');
+                localStorage.removeItem('threadData');
             })
             .then(function (data) {
                 notifier.success(`You have logged out successfully!`);

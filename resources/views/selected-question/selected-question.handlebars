@@ -9,11 +9,12 @@
         </div>
     </div>
     {{#each posts}}
-        <div class="panel panel-primary">
+        <div class="panel panel-primary" data-id="{{_id}}">
             <div class="panel-heading">
                 <h3 class="panel-title">by: {{author}}</h3>
                 <button class="btn-sm btn-success rate-comment-up">+</button>
                 <button class="btn-sm btn-danger rate-comment-down">-</button>
+                <button class="btn-sm btn-danger btn-delete-post">DELETE</button>
                 <span class="rating">Rating: </span>
                 <span class="rating-value">{{rating}}</span>
 

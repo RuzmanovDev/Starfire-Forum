@@ -5,9 +5,6 @@ import {threadData} from './../thread-data.js'
 
 const mainContainer = $('#wrapper');
 
-function getDateOfComment(date) {
-
-}
 function rateCommentUp(questionData) {
     $('#comments-container').on('click', '.rate-comment-up', function () {
         let $this = $(this);
@@ -96,7 +93,6 @@ class ThreadController {
 
         Promise.all([questionData, templateGenerator.load('selected-question', 'selected-question')])
             .then(function ([data,htmlContent]) {
-                console.log(data);
                 mainContainer.html(htmlContent(data));
             })
             .then(function () {
@@ -104,13 +100,6 @@ class ThreadController {
                 rateCommentDown(questionData);
             })
             .then(function () {
-                // $('#btn-add-response').on('click', function () {
-                //     let $this = $(this);
-                //     $this.toggle();
-                //
-                //     $('#add-new-post').toggle();
-                // });
-
                 $('#btn-post-response').on('click', function () {
                     let responseContentContainer = $('#post-response-content');
                     let responseContent = responseContentContainer.val();
@@ -126,6 +115,22 @@ class ThreadController {
                             notifier.error("The post wasn't added! Please try again!");
                             console.log(errorLog)
                         })
+                })
+            })
+            .then(function () {
+                $('.panel').on('click', '.btn-delete-post', function () {
+                    let id = $(this)
+                        .parents('.panel-primary')
+                        .eq(0)
+                        .attr('data-id');
+
+                    threadData.deletePost(id, questionData,categoryName)
+                        .then(function () {
+                            notifier.success("The post has been deleted!")
+                        })
+                        .catch(function (erroLog) {
+                            notifier.error(erroLog);
+                        });
                 })
             })
             .catch(function (errorLog) {
