@@ -1,0 +1,51 @@
+.navigation {
+    position: relative;
+
+    display: flex;
+    height: 70px;
+    overflow: hidden;
+
+    border-radius: @border_radius_default;
+    background: @color_main;
+    box-shadow: @shadow_base;
+
+    align-items: stretch;
+    flex-wrap: wrap;
+
+    a.btn {
+        display: flex;
+        padding: 20px;
+
+        font-size: @size_text;
+        align-content: center;
+
+        color: @color_main_bright;
+
+        align-items: center;
+
+        &:hover {
+            background: fade(@color_main_bright, 10%);
+        }
+    }
+
+    .activity-indicator {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        display: inline-block;
+        height: 2px;
+
+        background: @color_main_bright;
+
+        &.to-left {
+            transition: ~"margin-left @{transition_speed} @{transition_cubic}, margin-right @{transition_speed} @{transition_type}";
+
+        }
+        &.to-right {
+            transition: ~"margin-left @{transition_speed} @{transition_type}, margin-right @{transition_speed} @{transition_cubic}";
+
+        }
+    }
+}

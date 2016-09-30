@@ -1,0 +1,26 @@
+.card {
+    display: block;
+    padding: 20px 30px;
+    padding-bottom: 30px;
+
+    box-sizing: border-box;
+
+    border-radius: @border_radius_default;
+    background: @color_main_bright;
+    box-shadow: @shadow_base;
+
+    transition: ~"all @{transition_default}";
+
+    &:hover {
+        box-shadow: @shadow_big;
+    }
+
+    &::before,
+    &::after {
+        display: table;
+        clear: both;
+        box-sizing: border-box;
+
+        content: " ";
+    }
+}

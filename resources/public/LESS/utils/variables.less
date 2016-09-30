@@ -46,6 +46,7 @@
 
 /*    ---> SIZES <---    */
 // text-related
+@size_logo      : 28px;
 @size_big_title : 22px;
 @size_title     : 18px;
 @size_sub_title : 14px;
@@ -68,9 +69,9 @@
 @transition_speed         : .3s;
 @transition_fastspeed     : .1s;
 @transition_type          : linear;
-@transition_bouncetype    : cubic;
+@transition_cubic         : cubic-bezier(0, 0, 0.2, 1);
 @transition_default       : ~"@{transition_speed} @{transition_type}";
-@transition_default_cubic : ~"@{transition_fastspeed} @{transition_bouncetype}";
+@transition_default_cubic : ~"@{transition_fastspeed} @{transition_cubic}";
 
 /*    ---> BORDER RADIUS <---    */
 @border_radius_default : 3px;

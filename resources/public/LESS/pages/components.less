@@ -1,7 +1,20 @@
 #components {
     & > div {
+        display: block;
+        width: 100%;
+        height: auto;
         padding: 10px;
+        clear: both;
         box-sizing: border-box;
+        &::before,
+        &::after {
+            display: flex;
+            width: 100%;
+            height: 0;
+            clear: both;
+
+            content: "";
+        }
     }
 
     .typography {

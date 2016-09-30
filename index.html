@@ -4,21 +4,23 @@
     <meta charset="UTF-8">
     <title>Forum</title>
 
+    <link rel="stylesheet" type="text/css" href="resources/public/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="resources/public/css/main.css">
 </head>
 <body>
-    <header>
-        <div class="container title-container">
-            <h1 class="text-center">Team Starfire Dev World</h1>
+    <header class="main-header">
+        <div class="title-container container">
+            <h1 class="big-title main text-center">Team Starfire Dev World</h1>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#/home">Home</a></li>
-                <li><a href="#/askQuestion">Start new discussion</a></li>
-                <li><a href="#/login">Login</a></li>
-                <li><a href="#/register">Register</a></li>
-                <li><a href="#/logout">Logout</a></li>
-            </ul>
+
+        <nav class="navigation container">
+            <a class="btn" href="#/home">Home</a>
+            <a class="btn" href="#/askQuestion">New discussion</a>
+            <span class="flex"></span>
+            <a class="btn" href="#/login">Login</a>
+            <a class="btn" href="#/register">Register</a>
+            <a class="btn" href="#/logout">Logout</a>
+            <span class="activity-indicator"></span>
         </nav>
     </header>
 
