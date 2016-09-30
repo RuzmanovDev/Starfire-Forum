@@ -11,7 +11,7 @@ class Validator {
     }
 
     validatePassword(password) {
-        var regex = /^[A-Za-z0-9]\w{5,20}$/;
+        var regex = /^[A-Za-z0-9]\w{3,20}$/;
         if (!(regex.test(password))) {
             return false;
         }

@@ -131,7 +131,7 @@ class UserController {
                 context.redirect('#/home');
             })
             .catch(function (errorLog) {
-                notifier.error(errorLog);
+                notifier.error('You are not logged in!');
                 console.log(errorLog);
             });
     }
