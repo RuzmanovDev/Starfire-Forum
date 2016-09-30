@@ -18,6 +18,7 @@ const sammyApp = Sammy(wrapper, function () {
     this.get('#/askQuestion', threadController.askQuestion);
 
     // Categories routes
+
     this.get('#/ios', ()=> threadController.showThread('ios'));
     this.get('#/javascript', ()=> threadController.showThread('javascript'));
     this.get('#/csharp', ()=> threadController.showThread('csharp'));

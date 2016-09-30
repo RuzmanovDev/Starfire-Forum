@@ -1,0 +1,37 @@
+<h1>{{title}} </h1>
+<div class="container" id="comments-container">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">by: {{autor}}</h3>
+        </div>
+        <div class="panel-body">
+            {{question}}
+        </div>
+    </div>
+    {{#each posts}}
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">by: {{autor}}</h3>
+                <button class="btn-sm btn-success rate-comment-up">+</button>
+                <button class="btn-sm btn-danger rate-comment-down">-</button>
+                <span class="rating">Rating: </span>
+                <span class="rating-value">{{rating}}</span>
+
+            </div>
+            <div class="panel-body">
+                {{content}}
+            </div>
+            <div class="panel-footer">
+                Posted on: {{date}}
+            </div>
+        </div>
+    {{/each}}
+</div>
+<button class="btn btn-default" id="btn-add-response">Post response</button>
+<div id="add-new-post" style="display: none">
+    <h3>Add new Post</h3>
+    <div>
+        <textarea id="post-response-content"></textarea>
+        <button class="btn btn-default" id="btn-post-response">Post response</button>
+    </div>
+</div>

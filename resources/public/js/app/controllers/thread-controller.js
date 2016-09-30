@@ -5,7 +5,7 @@ import {threadData} from './../thread-data.js'
 
 const mainContainer = $('#wrapper');
 
-function getDateOfComment(date){
+function getDateOfComment(date) {
 
 }
 function rateCommentUp(questionData) {
@@ -30,14 +30,14 @@ function rateCommentDown(questionData) {
 
 class ThreadController {
     home() {
-        templateGenerator.load('home','home')
+        templateGenerator.load('home', 'home')
             .then(function (htmlContent) {
                 mainContainer.html(htmlContent);
             });
     }
 
     components() {
-        templateGenerator.load('components','index')
+        templateGenerator.load('components', 'index')
             .then(function (htmlContent) {
                 mainContainer.html(htmlContent);
             });
@@ -94,7 +94,7 @@ class ThreadController {
 
         let questionData = threadData.getQuestionById(urlId, categoryName);
 
-        Promise.all([questionData, templateGenerator.load('selected-question')])
+        Promise.all([questionData, templateGenerator.load('selected-question', 'selected-question')])
             .then(function ([data,htmlContent]) {
                 mainContainer.html(htmlContent(data));
             })
