@@ -31,26 +31,26 @@ class UserController {
 
                     //validate correct username, password and e-mail
                     if(!validator.validateUser(username)){
-                        toastr.error('Username is not in the correct format!');
+                        notifier.error('Username is not in the correct format!');
                         cleaner.cleanInputField($username);
                         return;
                     }
 
                     if(!validator.validatePassword(password)){
-                        toastr.error('Password is not in the correct format!');
+                        notifier.error('Password is not in the correct format!');
                         cleaner.cleanInputField($password, $confirmPassword);
                         return;
                     }
 
                     if(!validator.validateEmail(email)){
-                        toastr.error('E-mail is not valid!');
+                        notifier.error('E-mail is not valid!');
                         cleaner.cleanInputField($email);
                         return;
                     }
 
 
                     if(password != confirmPassword){
-                        toastr.error('Passwords do not match!');
+                        notifier.error('Passwords do not match!');
                         cleaner.cleanInputField($password, $confirmPassword);
                         return;
                     }
@@ -85,13 +85,13 @@ class UserController {
 
                     //validate username and password
                     if(!validator.validateUser(username)){
-                        toastr.error('Username is not in the correct format!');
+                        notifier.error('Username is not in the correct format!');
                         cleaner.cleanInputField($username);
                         return;
                     }
 
                     if(!validator.validatePassword(password)){
-                        toastr.error('Password is not in the correct format!');
+                        notifier.error('Password is not in the correct format!');
                         cleaner.cleanInputField($password, $confirmPassword);
                         return;
                     }
