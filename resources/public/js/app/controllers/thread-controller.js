@@ -96,6 +96,7 @@ class ThreadController {
 
         Promise.all([questionData, templateGenerator.load('selected-question', 'selected-question')])
             .then(function ([data,htmlContent]) {
+                console.log(data);
                 mainContainer.html(htmlContent(data));
             })
             .then(function () {
