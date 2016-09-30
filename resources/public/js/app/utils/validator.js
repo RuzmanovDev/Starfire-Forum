@@ -28,4 +28,6 @@ class Validator {
     }
 
 }
-export { Validator };
+
+const validator = new Validator();
+export { validator };

@@ -2,6 +2,8 @@ import 'jquery'
 import {templateGenerator} from 'template-generator'
 import {notifier} from 'notifier'
 import {userData} from './../user-data.js'
+import { validator } from 'validator'
+import { cleaner } from 'cleaner'
 
 const mainContainer = $('#wrapper');
 
@@ -13,11 +15,46 @@ class UserController {
             })
             .then(function () {
                 $('#btn-register').on('click', function () {
-                    var username = $('#user-name').val(),
-                        password = $('#input-password').val(),
-                        firstName = $('#user-first-name').val(),
-                        lastName = $('#user-last-name').val(),
-                        email = $('#user-email').val();
+                    var $username = $('#user-name'),
+                        $password = $('#input-password'),
+                        $confirmPassword = $('#input-password2'),
+                        $email = $('#user-email'),
+                        $firstName = $('#user-first-name'),
+                        $lastName = $('#user-last-name');
+
+                    var username = $username.val(),
+                        password = $password.val(),
+                        confirmPassword = $confirmPassword.val(),
+                        firstName = $firstName.val(),
+                        lastName = $lastName.val(),
+                        email = $email.val();
+
+                    //validate correct username, password and e-mail
+                    if(!validator.validateUser(username)){
+                        toastr.error('Username is not in the correct format!');
+                        cleaner.cleanInputField($username);
+                        return;
+                    }
+
+                    if(!validator.validatePassword(password)){
+                        toastr.error('Password is not in the correct format!');
+                        cleaner.cleanInputField($password, $confirmPassword);
+                        return;
+                    }
+
+                    if(!validator.validateEmail(email)){
+                        toastr.error('E-mail is not valid!');
+                        cleaner.cleanInputField($email);
+                        return;
+                    }
+
+
+                    if(password != confirmPassword){
+                        toastr.error('Passwords do not match!');
+                        cleaner.cleanInputField($password, $confirmPassword);
+                        return;
+                    }
+
 
                     let newUser = {username, password, firstName, lastName, email};
 
@@ -40,8 +77,26 @@ class UserController {
             })
             .then(function () {
                 $('#btn-login').on('click', function () {
-                    var username = $('#user-name').val(),
-                        password = $('#input-password').val();
+                    var $username = $('#user-name'),
+                        $password = $('#input-password');
+
+                    var username = $username.val(),
+                        password = $password.val();
+
+                    //validate username and password
+                    if(!validator.validateUser(username)){
+                        toastr.error('Username is not in the correct format!');
+                        cleaner.cleanInputField($username);
+                        return;
+                    }
+
+                    if(!validator.validatePassword(password)){
+                        toastr.error('Password is not in the correct format!');
+                        cleaner.cleanInputField($password, $confirmPassword);
+                        return;
+                    }
+
+
                     let user = {
                         username,
                         password

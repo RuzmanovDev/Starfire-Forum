@@ -20,6 +20,7 @@ SystemJS.config({
         'notifier': './resources/public/js/app/utils/notifier.js',
         'requester': './resources/public/js/app/utils/requester.js',
         'validator': './resources/public/js/app/utils/validator.js',
+        'cleaner': './resources/public/js/app/utils/cleanUpInputField.js',
 
         // controllers
         'user-controller': './resources/public/js/app/controllers/user-controller.js',
