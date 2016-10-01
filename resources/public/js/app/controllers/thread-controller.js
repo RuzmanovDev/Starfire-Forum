@@ -128,7 +128,8 @@ class ThreadController {
                     threadData.addResponse(responseContent)
                         .then(function () {
                             notifier.success("Post added!");
-                            context.redirect(`#/${urlId}`);
+                            // context.redirect(`#/${urlId}`);
+                            window.refreshState();
                         })
                         .catch(function (errorLog) {
                             notifier.error("The post wasn't added! Please try again!");
@@ -146,7 +147,9 @@ class ThreadController {
                     threadData.deletePost(id, questionData, categoryName)
                         .then(function () {
                             notifier.success("The post has been deleted!");
-                            context.redirect(`#/${categoryName}`);
+                            // context.redirect(`#/${categoryName}`);
+
+                            window.refreshState();
                         })
                         .catch(function (erroLog) {
                             notifier.error(erroLog);
