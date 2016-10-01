@@ -10,7 +10,9 @@ const user = {
 };
 describe('Login tests', function () {
 
-
+    it('asdas', function () {
+        expect(2).to.eql(2);
+    })
 
 });
 
