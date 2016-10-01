@@ -27,7 +27,7 @@ SystemJS.config({
         'thread-controller': './resources/public/js/app/controllers/thread-controller.js',
         'thread-data': './resources/public/js/app/thread-data.js',
         'user-data': './resources/public/js/app/user-data.js',
-        'Post': '/resources/public/js/app/models/post.js'
+        'Post': './resources/public/js/app/models/post.js'
     }
 });
 
