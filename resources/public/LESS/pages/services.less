@@ -8,12 +8,27 @@
     }
 
     .services-wrapper {
+        display: flex;
         margin-right: -10px;
         margin-left: -10px;
+
+        align-items: stretch;
     }
 
     .card-container {
+        display: flex;
         padding: 10px;
         box-sizing: border-box;
+        
+        p {
+            width: 100%;
+        }
+
+        > a {
+            display: flex;
+
+            align-content: flex-start;
+            flex-wrap: wrap;
+        }
     }
 }
