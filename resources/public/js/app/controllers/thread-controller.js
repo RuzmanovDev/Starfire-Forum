@@ -78,7 +78,7 @@ class ThreadController {
                 mainContainer.html(htmlContent);
             })
             .then(function () {
-                $('#add-post-btn').on('click', function () {
+                $('#add-post-btn').on('click', function (ev) {
                     let threadCategory = $('#thread-category').val();
                     let postTitle = $('#post-title').val();
                     let postQuestion = $('#post-content').val();
@@ -96,12 +96,14 @@ class ThreadController {
                             notifier.error("You must be logged in to post!");
                             context.redirect('#/login');
                         });
+
+                    ev.preventDefault();
+                    return false;
                 })
             })
     }
 
     showQuestion(context) {
-        console.log(context);
         let threadContent = JSON.parse(localStorage.threadData);
         let urlId = context.params.id;
         let categoryName = threadContent.categoryName;
@@ -135,7 +137,7 @@ class ThreadController {
                 })
             })
             .then(function () {
-                $('.panel').on('click', '.btn-delete-post', function () {
+                $('.panel').on('click', '.btn-delete-post', function (ev) {
                     let id = $(this)
                         .parents('.panel-primary')
                         .eq(0)
@@ -149,6 +151,9 @@ class ThreadController {
                         .catch(function (erroLog) {
                             notifier.error(erroLog);
                         });
+
+                    ev.preventDefault();
+                    return false;
                 })
             })
             .catch(function (errorLog) {

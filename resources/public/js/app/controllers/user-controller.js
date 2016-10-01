@@ -21,7 +21,7 @@ class UserController {
                     yearRange: "-80:+0"
                 });
 
-                $('#btn-register').on('click', function () {
+                $('#btn-register').on('click', function (ev) {
                     var $username = $('#user-name'),
                         $password = $('#input-password'),
                         $confirmPassword = $('#input-password2'),
@@ -74,6 +74,9 @@ class UserController {
                         notifier.error(errorLog);
                         console.log(errorLog);
                     });
+
+                    ev.preventDefault();
+                    return false;
                 });
 
             })
@@ -85,7 +88,7 @@ class UserController {
                 mainContainer.html(htmlContent);
             })
             .then(function () {
-                $('#btn-login').on('click', function () {
+                $('#btn-login').on('click', function (ev) {
                     var $username = $('#user-name'),
                         $password = $('#input-password');
 
@@ -124,6 +127,9 @@ class UserController {
                             notifier.error(`${errorLog} occurred`);
                             console.log(errorLog)
                         });
+
+                    ev.preventDefault();
+                    return false;
                 })
             })
     }
