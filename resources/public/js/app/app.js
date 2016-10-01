@@ -33,6 +33,8 @@ const sammyApp = Sammy(wrapper, function () {
 
 sammyApp.run('#/');
 
+window.refreshState = () => sammyApp.refresh();
+
 $(function () {
 
     /// да, да.. знам, че не трябва да е тука
