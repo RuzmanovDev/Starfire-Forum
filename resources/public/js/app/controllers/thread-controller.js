@@ -165,6 +165,58 @@ class ThreadController {
             })
     }
 
+	search() {
+        let searchedText = $('#searchText').val();
+
+        console.log(searchedText);
+        console.log(JSON.parse(localStorage.threadData));
+        let dataToSearchIn = JSON.parse(localStorage.threadData).data;
+        let category = JSON.parse(localStorage.threadData).categoryName;
+        console.log(category);
+
+        let searchResult = [];
+        searchResult.push(category);
+
+        dataToSearchIn.forEach(function(element) {
+
+            let title = element.title || "";
+            let question = element.question || "";
+            let author = element.author || "";
+
+            if((title.indexOf(searchedText) !== -1) || (question.indexOf(searchedText) !== -1) || (author.indexOf(searchedText) !== -1)){
+                console.log(element._id);
+                searchResult.push(element._id);
+            } else {
+                let posts = element.posts || [];
+
+                posts.forEach(function(post) {
+                    let author = post.author || "";
+                    let content = post.content || "";
+
+                    if((author.indexOf(searchedText) !== -1) || (content.indexOf(searchedText) !== -1)){
+                        console.log(element._id);
+                        searchResult.push(element._id);
+                    }
+                });
+            }
+        });
+        console.log(searchResult);
+
+        Promise.all([templateGenerator.load('search', 'search'), threadData.search(searchResult[1], searchResult[0])])
+            .then(function ([htmlTemplate, data]){
+                let searchedToDisplay = {
+                    data: data,
+                    categoryName: searchResult[0]
+                }
+                console.log(searchedToDisplay);
+                mainContainer.html(htmlTemplate(searchedToDisplay));
+            })
+            .catch(function(errorLog) {
+                notifier.error("No search result!");
+				console.log(errorLog);
+            })
+    }
+	
     addResponse() {
 
     }

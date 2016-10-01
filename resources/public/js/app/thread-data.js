@@ -147,6 +147,16 @@ class ThreadData {
 
             });
     }
+	
+	search(id, categoryName){
+        let url = `https://baas.kinvey.com/appdata/${kinveyConst.APP_ID}/${categoryName}/${id}`;
+        let headers = {
+            'Authorization': `Kinvey ${localStorage.authKey}`,
+            'ContentType': 'application/json',
+        };
+
+        return requester.get(url, {headers: headers})
+    }
 }
 
 const threadData = new ThreadData();
