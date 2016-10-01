@@ -2,7 +2,7 @@ import 'jquery'
 import  *  as  jqueryui from '../../../../../bower_components/jquery-ui/jquery-ui.min.js'
 import {templateGenerator} from 'template-generator'
 import {notifier} from 'notifier'
-import {userData} from './../user-data.js'
+import {userData} from 'user-data'
 import {validator} from 'validator'
 import {cleaner} from 'cleaner'
 

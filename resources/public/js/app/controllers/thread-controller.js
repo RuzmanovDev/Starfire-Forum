@@ -1,7 +1,7 @@
 import 'jquery'
 import {templateGenerator} from 'template-generator'
 import {notifier} from 'notifier'
-import {threadData} from './../thread-data.js'
+import {threadData} from 'thread-data'
 
 const mainContainer = $('#wrapper');
 
