@@ -27,7 +27,8 @@ class UserController {
                         $confirmPassword = $('#input-password2'),
                         $email = $('#user-email'),
                         $firstName = $('#user-first-name'),
-                        $lastName = $('#user-last-name');
+                        $lastName = $('#user-last-name'),
+                        dateOfBirth = $('#date-of-birth').val();
 
                     var username = $username.val(),
                         password = $password.val(),
@@ -63,7 +64,7 @@ class UserController {
                     }
 
 
-                    let newUser = {username, password, firstName, lastName, email};
+                    let newUser = {username, password, firstName, lastName, email, dateOfBirth};
 
                     userData.register(newUser)
                         .then(function (user) {
