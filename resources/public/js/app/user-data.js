@@ -15,7 +15,8 @@ class UserData {
             password: user.password,
             email: user.email,
             firstName: user.firstName,
-            lastName: user.lastName
+            lastName: user.lastName,
+            dateOfBirth: user.dateOfBirth
         };
 
         return requester.post(url, {

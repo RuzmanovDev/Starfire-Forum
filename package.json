@@ -21,6 +21,7 @@
     "grunt-contrib-less": "^1.4.0",
     "grunt-contrib-watch": "^1.0.0",
     "jit-grunt": "^0.10.0",
+    "sinon": "^1.17.6",
     "systemjs": "^0.19.38",
     "systemjs-plugin-babel": "0.0.15"
   }

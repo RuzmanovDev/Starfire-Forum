@@ -1,6 +1,6 @@
 import {requester} from 'requester'
 import {kinveyConst} from 'kinvey-constants'
-import {Post} from './models/post.js'
+import {Post} from 'Post'
 
 class ThreadData {
     getThread(threadName) {

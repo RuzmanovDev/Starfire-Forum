@@ -1,7 +1,8 @@
 import 'jquery'
+import  *  as  jqueryui from '../../../../../bower_components/jquery-ui/jquery-ui.min.js'
 import {templateGenerator} from 'template-generator'
 import {notifier} from 'notifier'
-import {userData} from './../user-data.js'
+import {userData} from 'user-data'
 import {validator} from 'validator'
 import {cleaner} from 'cleaner'
 
@@ -14,13 +15,20 @@ class UserController {
                 mainContainer.html(htmlContent);
             })
             .then(function () {
-                $('#btn-register').on('click', function () {
+                $("#date-of-birth").datepicker({
+                    changeYear: true,
+                    changeMonth: true,
+                    yearRange: "-80:+0"
+                });
+
+                $('#btn-register').on('click', function (ev) {
                     var $username = $('#user-name'),
                         $password = $('#input-password'),
                         $confirmPassword = $('#input-password2'),
                         $email = $('#user-email'),
                         $firstName = $('#user-first-name'),
-                        $lastName = $('#user-last-name');
+                        $lastName = $('#user-last-name'),
+                        dateOfBirth = $('#date-of-birth').val();
 
                     var username = $username.val(),
                         password = $password.val(),
@@ -56,7 +64,7 @@ class UserController {
                     }
 
 
-                    let newUser = {username, password, firstName, lastName, email};
+                    let newUser = {username, password, firstName, lastName, email, dateOfBirth};
 
                     userData.register(newUser)
                         .then(function (user) {
@@ -66,7 +74,11 @@ class UserController {
                         notifier.error(errorLog);
                         console.log(errorLog);
                     });
+
+                    ev.preventDefault();
+                    return false;
                 });
+
             })
     }
 
@@ -76,7 +88,7 @@ class UserController {
                 mainContainer.html(htmlContent);
             })
             .then(function () {
-                $('#btn-login').on('click', function () {
+                $('#btn-login').on('click', function (ev) {
                     var $username = $('#user-name'),
                         $password = $('#input-password');
 
@@ -115,6 +127,9 @@ class UserController {
                             notifier.error(`${errorLog} occurred`);
                             console.log(errorLog)
                         });
+
+                    ev.preventDefault();
+                    return false;
                 })
             })
     }
