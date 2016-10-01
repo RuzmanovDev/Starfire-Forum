@@ -1,4 +1,5 @@
 import 'jquery'
+import  *  as  jqueryui from '../../../../../bower_components/jquery-ui/jquery-ui.min.js'
 import {templateGenerator} from 'template-generator'
 import {notifier} from 'notifier'
 import {userData} from './../user-data.js'
@@ -14,6 +15,12 @@ class UserController {
                 mainContainer.html(htmlContent);
             })
             .then(function () {
+                $("#date-of-birth").datepicker({
+                    changeYear: true,
+                    changeMonth: true,
+                    yearRange: "-80:+0"
+                });
+
                 $('#btn-register').on('click', function () {
                     var $username = $('#user-name'),
                         $password = $('#input-password'),
@@ -67,6 +74,7 @@ class UserController {
                         console.log(errorLog);
                     });
                 });
+
             })
     }
 
