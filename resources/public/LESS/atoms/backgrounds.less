@@ -1,0 +1,24 @@
+.split-bg {
+    position: relative;
+    &::before,
+    &::after {
+        position: absolute;
+        top: 0;
+
+        width: 50%;
+        height: 100%;
+
+        content: "";
+        z-index: 0;
+    }
+    &::before {
+        left: 0;
+
+        background: @color_main;
+    }
+    &::after {
+        left: 50%;
+
+        background: @color_main_bright;
+    }
+}

@@ -5,22 +5,25 @@
     height: 70px;
     overflow: hidden;
 
-    border-radius: @border_radius_default;
     background: @color_main;
     box-shadow: @shadow_base;
 
     align-items: stretch;
     flex-wrap: wrap;
 
+    .container {
+        display: flex;
+    }
+
     a.btn {
         display: flex;
         padding: 20px;
 
         font-size: @size_text;
-        align-content: center;
 
         color: @color_main_bright;
 
+        align-content: center;
         align-items: center;
 
         &:hover {

@@ -7,19 +7,34 @@
         padding-bottom: 50px;
     }
 
-    .services-wrapper {
+    .join-content {
+        padding: 10px;
+        margin-right: -10px;
+        margin-left: -10px;
+        
+        @media screen and (max-width: 768px) {
+            margin: 0;
+        }
+    }
+
+    .services-wrapper, {
         display: flex;
         margin-right: -10px;
         margin-left: -10px;
 
         align-items: stretch;
+
+        @media screen and (max-width: 768px) {
+            display: block;
+            margin: 0;
+        }
     }
 
     .card-container {
         display: flex;
         padding: 10px;
         box-sizing: border-box;
-        
+
         p {
             width: 100%;
         }

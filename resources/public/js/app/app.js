@@ -47,7 +47,7 @@ $(function () {
     })
     function calcIndicatorWidth() {
         let indicator = $(this).find(".activity-indicator"),
-            active = $(this).find(".active").length ? $(this).find(".active") : $(this).find(" > a").eq(0).addClass("active"),
+            active = $(this).find(".active").length ? $(this).find(".active") : $(this).find(" .container > a").eq(0).addClass("active"),
             activeIndex = $(this).attr("activeIndex") || 0;
 
 
@@ -67,11 +67,11 @@ $(function () {
 
     $(document).on("click", ".navigation", calcIndicatorWidth);
 
-    $(document).on("click", ".navigation > a", function (e) {
+    $(document).on("click", ".navigation .container > a", function (e) {
         $(this).addClass("active")
             .siblings().removeClass("active");
 
-        $(this).parent().trigger("click");
+        $(this).parents(".navigation").trigger("click");
     });
 
     $(window).resize(function () {

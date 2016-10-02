@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="resources/public/css/main.css">
     <link rel="stylesheet" type="text/css" href="bower_components/toastr/toastr.css">
     <link rel="stylesheet" type="text/css" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css">
-    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <!-- <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css"> -->
 
     <!--link template for login-->
     <link rel="stylesheet" type="text/css" href="resources/public/css/login/css/style.css">
@@ -21,94 +21,99 @@
 
 </head>
 <body>
-<header class="main-header">
-    <div class="title-container container">
-        <h1 class="big-title main text-center">Team Starfire Dev World</h1>
-    </div>
 
-    <nav class="navigation container">
-        <a class="btn" href="#/home">Home</a>
-        <a class="btn" href="#/askQuestion">New discussion</a>
-        <a class="btn" href="#/components"><i class="icon-build"></i></a>
-        <span class="flex"></span>
-        <a class="btn" href="#/login">Login</a>
-        <a class="btn" href="#/register">Register</a>
-        <a class="btn" href="#/logout">Logout</a>
-		<input id="searchText" type="text">
-        <a class="btn" href="#/search">Submit</a>
-        <span class="activity-indicator"></span>
-    </nav>
-</header>
+    <div class="main-container-fluid">
+        <header class="main-header">
+            <div class="title-container container">
+                <h1 class="big-title main text-center">Team Starfire Dev World</h1>
+            </div>
 
-<div id="wrapper"></div>
+            <nav class="navigation">
+                <div class="container">
+                    <a class="btn" href="#/home">Home</a>
+                    <a class="btn" href="#/askQuestion">New discussion</a>
+                    <a class="btn" href="#/components"><i class="icon-build"></i></a>
+                    <span class="flex"></span>
+                    <a class="btn" href="#/login">Login</a>
+                    <a class="btn" href="#/register">Register</a>
+                    <a class="btn" href="#/logout">Logout</a>
+                    <input id="searchText" type="text">
+                    <a class="btn" href="#/search">Submit</a>
+                    <span class="activity-indicator"></span>                 
+                </div>
+            </nav>
+        </header>
 
-<footer>
-    <div class="fb-like" data-href="https://www.facebook.com/Team-Starfire-861041394030994/?fref=ts" data-width="400"
-         data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
-    <section id="FooterBar">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="versionAndTerms">
+        <div id="wrapper"></div>
+
+        <footer class="main-footer split-bg">
+            <div class="container raised">
+                <div class="flex-center col-ns-12 col-sm-6">
+                    <div class="version-and-terms text main bright">
                         <p>Всички права запазени © Telerik Academy 2012-2016 </p>
                         <p>
                             <a href="/Home/About">
-                                Telerik Academy Learning System 5.7 (build 20160514.1dfa2d3
+                            Telerik Academy Learning System 5.7 (build 20160514.1dfa2d3
                             </a>
                         </p>
                         <p class="termsAndConditions">
-                            <a href="http://telerikacademy.com/Files/1cf99863-2163-4c99-8e82-a667a2814924.pdf"
-                               target="_blank">Правила и условия</a>
+                            <a href="http://telerikacademy.com/Files/1cf99863-2163-4c99-8e82-a667a2814924.pdf" target="_blank">Правила и условия</a>
                         </p>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div id="FooterLogo"></div>
-                </div>
-                <div class="col-sm-4">
-                    <ul id="SocialNetworks">
-                        <li>
-                            <a href="http://www.facebook.com/TelerikAcademy" style="background-position:0 0;"
-                               target="_blank"></a>
-                        </li>
-                        <li>
-                            <a href="http://www.youtube.com/user/TelerikAcademy" style="background-position:0 175px;"
-                               target="_blank"></a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/#!/TelerikAcademy" style="background-position:0 140px;"
-                               target="_blank"></a>
-                        </li>
-                        <li>
-                            <a href="https://plus.google.com/u/0/b/105769630299292709719/"
-                               style="background-position:0 105px;" target="_blank"></a>
-                        </li>
-                        <li>
-                            <a href="/Rss/LatestCourses" style="background-position: 0 70px;" target="_blank"></a>
-                        </li>
-                        <li>
-                            <a href="http://www.linkedin.com/groups?gid=3161033&amp;trk=hb_side_g"
-                               style="background-position:0 35px;" target="_blank"></a>
-                        </li>
-                    </ul>
+                <div class="col-ns-12 col-sm-6">
+                    <div class="col-ns-12 col-xs-6 facebook">
+                        <h3 class="sub-title main">Like us on Facebook!</h3>
+                        <div class="fb-like" data-href="https://www.facebook.com/Team-Starfire-861041394030994/?fref=ts" data-width="200" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+                    </div>
+                    <div class="col-ns-12 col-xs-6">
+                        <h3 class="sub-title main text-right">Find us on</h3>
+                        <ul class="social-networks">
+                            <li>
+                                <a class="btn link" href="http://www.facebook.com/TelerikAcademy" target="_blank">Facebook</a>
+                            </li>
+                            <li>
+                                <a class="btn link" href="http://www.youtube.com/user/TelerikAcademy" target="_blank">Youtube</a>
+                            </li>
+                            <li>
+                                <a class="btn link" href="https://twitter.com/#!/TelerikAcademy" target="_blank">Twitter</a>
+                            </li>
+                            <li>
+                               <a class="btn link" href="/Rss/LatestCourses" target="_blank">Latest Courses</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-</footer>
 
-<script src="node_modules/systemjs/dist/system.js"></script>
-<script src="bower_components/crypto-js/crypto-js.js"></script>
-<script src="./systemjs-config.js"></script>
-<script>
-    (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "//connect.facebook.net/bg_BG/sdk.js#xfbml=1&version=v2.7";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-</script>
+        <!--          <div class="container">
+                     <div class="row">
+                         <div class="col-sm-5">
+                             
+                         </div>
+                         <div class="col-sm-3">
+                             <div id="FooterLogo"></div>
+                         </div>
+                         <div class="col-sm-4">
+                  </div>
+                     </div>
+                 </div> -->
+        </footer>
+
+    </div>
+
+    <script src="node_modules/systemjs/dist/system.js"></script>
+    <script src="bower_components/crypto-js/crypto-js.js"></script>
+    <script src="./systemjs-config.js"></script>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "//connect.facebook.net/bg_BG/sdk.js#xfbml=1&version=v2.7";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 </body>
 </html>
