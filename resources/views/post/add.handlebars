@@ -1,30 +1,37 @@
-<form class="form-horizontal">
-    <fieldset>
-        <legend>Ask Question</legend>
-        <div class="form-group">
-            <label for="example-text-input" class="col-lg-2 control-label">Thread Category</label>
-            <div class="col-lg-10">
-                <select id="thread-category" class="form-control">
-                    <option value="ios">iOS development</option>
-                    <option value="javascript">Javascript development</option>
-                    <option value="csharp">C# development</option>
-                </select>
+<div class="container add-post">
+    <div class="content">
+        <div class="card text-center">
+            <h4 class="title main">Ask Question</h4>
+            <p class="text secondary">For all Apple-boy or girl fans. In this thread you will find the answer you are looking for!</p>
+            
+            <div class="input-group">
+                <label class="caption main">Thread Category</label>
+                <div class="col-ns-12">
+                    <select id="thread-category" class="input col-ns-12">
+                        <option value="ios" selected >iOS development</option>
+                        <option value="javascript">Javascript development</option>
+                        <option value="csharp">C# development</option>
+                    </select>
+                </div>  
             </div>
-        </div>
-        <div class="form-group">
-            <label for="inputPassword" class="col-lg-2 control-label">Title</label>
-            <div class="col-lg-10">
-                <input class="form-control" id="post-title"/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="example-text-input" class="col-lg-2 control-label">Post content</label>
-            <div class="col-xs-10">
-                <textarea id="post-content" class="form-control">
 
-                </textarea>
-                <button id="add-post-btn" class="btn btn-default">Add post</button>
+            <div class="input-group">
+                <label class="caption main">Title</label>
+                <div class="col-ns-12">
+                    <input class="input col-ns-12" id="post-title"/>
+                </div>
             </div>
+
+            <div class="input-group">
+                <label class="caption main">Post content</label>
+                <div class="col-ns-12">
+                    <textarea id="post-content" class="input col-ns-12"></textarea>
+                </div>
+            </div>
+
+            <button id="add-post-btn" class="btn raised pull-right">Add post</button>
+
         </div>
-    </fieldset>
-</form>
+
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.input {
+    padding: 0;
+
+    resize: none !important;
+    transition: all @transition_default;
+
+    border: none !important;
+    border-bottom: 2px solid fade(@color_secondary_gray, 30%) !important;
+    border-radius: 0 !important;
+    outline: none !important;
+    background: @color_main_bright !important;
+    &:active,
+    &:hover,
+    &:focus {
+        border-bottom: 2px solid @color_main !important;
+    }
+}
