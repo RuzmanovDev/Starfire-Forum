@@ -1,27 +1,51 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <div class="account-wall">
-                <img class="profile-img"
-                     src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
-                     alt="">
-                <form class="form-signin">
-                    <input type="text" id="user-first-name" class="form-control" placeholder="First name" required
-                           autofocus>
-                    <input type="text" id="user-last-name" class="form-control" placeholder="Last name" required
-                           autofocus>
-                    <input type="text" id="user-name" class="form-control" placeholder="Username" required autofocus>
-                    <input type="email" id="user-email" class="form-control" placeholder="E-mail" required autofocus>
-                    <input type="text" id="date-of-birth" class="form-control" placeholder="Date of birth" required
-                           autofocus>
-                    <input type="password" id="input-password" class="form-control" placeholder="Password" required>
-                    <input type="password" id="input-password2" class="form-control" placeholder="Confirm password"
-                           required>
-                    <button id="btn-register" class="btn btn-lg btn-primary btn-block" type="submit">
-                        Register
-                    </button>
-                </form>
-            </div>
+<div class="container auth register">
+    <div class="content">
+        <div class="card text-center">
+            <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+                alt="">
+
+            <form class="form-signin">
+
+                <div class="input-group">
+                  <label class="caption main dark">First name</label>
+                  <input type="text" id="user-first-name" class="input col-ns-12" required autofocus>
+                </div>
+
+                <div class="input-group">
+                  <label class="caption main dark">Last name</label>
+                  <input type="text" id="user-last-name" class="input col-ns-12" required autofocus>
+                </div>
+
+                <div class="input-group">
+                  <label class="caption main dark">Username</label>
+                  <input type="text" id="user-name" class="input col-ns-12" autofocus>
+                </div>
+
+                <div class="input-group">
+                  <label class="caption main dark">E-mail</label>
+                  <input type="email" id="user-email" class="input col-ns-12" autofocus>
+                </div>
+
+                <div class="input-group">
+                  <label class="caption main dark">Date of birth</label>
+                  <input type="text" id="date-of-birth" class="input col-ns-12" required autofocus>
+                </div>
+
+                <div class="input-group">
+                  <label class="caption main dark">Password</label>
+                  <input type="password" id="input-password" class="input col-ns-12" required>
+                </div>
+
+                <div class="input-group">
+                  <label class="caption main dark">Confirm password</label>
+                  <input type="password" id="input-password2" class="input col-ns-12" required>
+                </div>
+
+
+
+                <button  id="btn-register" class="btn raised pull-right" type="submit">Register</button>
+            </form>
+
         </div>
     </div>
 </div>
