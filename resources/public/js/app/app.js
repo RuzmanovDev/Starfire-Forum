@@ -42,6 +42,11 @@ $(function () {
     /// ще го махна по някое време
     ///
 
+    $(".navigation input#searchText").on("keydown",function(e){
+        if(e.keyCode == 13)
+            window.location.href = "#/search";
+    })
+
     $(".navigation").each(function () {
         calcIndicatorWidth.call(this);
     })

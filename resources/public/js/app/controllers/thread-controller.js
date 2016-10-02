@@ -200,7 +200,20 @@ class ThreadController {
             }
         });
         // console.log(searchResult);
-        $("#wrapper").html("").append("<div class='col-md-2 col-md-offset-5'><h1>Search result:</h1></div>");
+        $("#wrapper").html("").append(`<div class="container search-results">
+                                            <div class="content">
+                                                <div class="card">
+                                                <h4 class="big-title main uppercase"><span class="text main">Search results for query:</span> <span class="query">${searchedText}</span></h4>
+                                                
+                                                <hr>
+
+                                                <div class="results-container">
+                                                    
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>`);
 
         searchResult.forEach(function(result){
             Promise.all([templateGenerator.load('search', 'search'), threadData.search(result, category)])
@@ -209,7 +222,7 @@ class ThreadController {
                         data: data,
                         categoryName: category
                     }
-                    $(".col-md-2").append($(htmlTemplate(searchedToDisplay)));
+                    $(".results-container").append($(htmlTemplate(searchedToDisplay)));
                 })
                 .catch(function(errorLog) {
                     notifier.error("No search result!");
