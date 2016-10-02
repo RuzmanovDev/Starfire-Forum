@@ -34,6 +34,23 @@
         }
     }
 
+    &.icon {
+        padding: 0 14px;
+        margin-left: 5px;
+
+        font-size: @size_big_title;
+
+        color: @color_main;
+        background: fade(@color_main_dark, 2%);
+
+        &:hover {
+            background: fade(@color_main_dark, 10%);
+        }
+        &[disabled] {
+            color: fade(@color_main_bright, 70%);
+        }
+    }
+
     &.raised {
         color: @color_text_main_dark;
         background: @color_main_bright;
@@ -48,6 +65,14 @@
         &[disabled] {
             color: fade(@color_main_bright, 70%);
             box-shadow: @shadow_small, 70%;
+        }
+
+        &.small {
+            height: auto !important;
+            padding: 6px 7px;
+
+            font-size: @size_caption;
+            line-height: 1;
         }
 
         &.primary {

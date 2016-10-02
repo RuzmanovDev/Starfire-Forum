@@ -1,38 +1,46 @@
-<h1>{{title}} </h1>
-<div class="container" id="comments-container">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title">by: {{author}}</h3>
+<div class="container question-read" id="comments-container">
+    <div class="content">
+        <div class="card">
+            <h4 class="big-title main uppercase">{{title}}</h4>
+            <p class="sub-title main secondary pull-right">by: {{author}}</p>
+            
+            <p class="title question-body">{{question}}</p>
+
+            <hr>
+            
+           <div class="comments-container">
+               {{#each posts}}
+                   <div class="comment" data-id="{{_id}}">
+                       <h6 class="sub-title main semibold">{{content}}</h5>
+                       <div class="row">
+                           <p class="date pull-left caption main secondary">{{date}}</p>
+                           <p class="date pull-right caption main secondary semibold">by: {{author}}</p>
+                       </div>
+
+                       <div class="row flexible">
+                           <span class="rating text main secondary">
+                               Rating: <span class="rating-value sub-title main bold">{{rating}}</span>
+                           </span>
+               
+                           <button class="btn icon rate-comment-down"><i class="icon-exposure_neg"></i></button>
+                           <button class="btn icon rate-comment-up"><i class="icon-exposure_plus"></i></button>
+                           
+                           <span class="flex"></span>
+
+                           <button class="btn small raised btn-delete-post">DELETE</button>
+                       </div>
+                   </div>
+               {{/each}}
+           </div>
+
+            <div id="add-new-post">
+                <h3 class="big-title main uppercase">Add new Post</h3>
+                <textarea class="input col-ns-12" id="post-response-content"></textarea>      
+
+               <button class="btn raised primary pull-right post-response" id="btn-post-response">Post response</button>
+            </div>
 
         </div>
-        <div class="panel-body">
-            {{question}}
-        </div>
-    </div>
-    {{#each posts}}
-        <div class="panel panel-primary" data-id="{{_id}}">
-            <div class="panel-heading">
-                <h3 class="panel-title">by: {{author}}</h3>
-                <button class="btn-sm btn-success rate-comment-up">+</button>
-                <button class="btn-sm btn-danger rate-comment-down">-</button>
-                <button class="btn-sm btn-danger btn-delete-post">DELETE</button>
-                <span class="rating">Rating: </span>
-                <span class="rating-value">{{rating}}</span>
 
-            </div>
-            <div class="panel-body">
-                {{content}}
-            </div>
-            <div class="panel-footer">
-                Posted on: {{date}}
-            </div>
-        </div>
-    {{/each}}
-</div>
-<div id="add-new-post">
-    <h3>Add new Post</h3>
-    <div>
-        <textarea id="post-response-content"></textarea>
-        <button class="btn btn-default" id="btn-post-response">Post response</button>
     </div>
 </div>

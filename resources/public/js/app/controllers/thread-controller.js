@@ -8,13 +8,13 @@ const mainContainer = $('#wrapper');
 function rateCommentUp(questionData, categoryName) {
     $('#comments-container').on('click', '.rate-comment-up', function () {
         let $this = $(this);
-        let $rating = $this.siblings('.rating-value');
+        let $rating = $this.siblings('.rating').find(".rating-value");
         let currentRating = +$rating.text();
 
         $rating.text(`${currentRating += 1}`);
 
         let id = $(this)
-            .parents('.panel-primary')
+            .parents('.comment')
             .eq(0)
             .attr('data-id');
 
@@ -25,13 +25,13 @@ function rateCommentUp(questionData, categoryName) {
 function rateCommentDown(questionData, categoryName) {
     $('#comments-container').on('click', '.rate-comment-down', function () {
         let $this = $(this);
-        let $rating = $this.siblings('.rating-value');
+        let $rating = $this.siblings('.rating').find(".rating-value");
         let currentRating = +$rating.text();
 
         $rating.text(`${currentRating -= 1}`);
 
         let id = $(this)
-            .parents('.panel-primary')
+            .parents('.comment')
             .eq(0)
             .attr('data-id');
 
@@ -138,9 +138,9 @@ class ThreadController {
                 })
             })
             .then(function () {
-                $('.panel').on('click', '.btn-delete-post', function (ev) {
+                $('.comment').on('click', '.btn-delete-post', function (ev) {
                     let id = $(this)
-                        .parents('.panel-primary')
+                        .parents('.comment')
                         .eq(0)
                         .attr('data-id');
 
