@@ -3,6 +3,8 @@ import {requester} from 'requester'
 import {userData} from 'user-data'
 import {kinveyConst} from 'kinvey-constants'
 import {threadData} from 'thread-data'
+import {userController} from 'user-controller'
+import {templateGenerator} from 'template-generator'
 
 mocha.setup('bdd');
 
@@ -34,7 +36,7 @@ describe('UNIT TESTS', function () {
                 localStorage.clear();
             });
 
-            it('Expect post() to be called once', function(done) {
+            it('Expect post() to be called once', function (done) {
                 userData.register(user)
                     .then(() => {
                         expect(requester.post.calledOnce).to.be.true;
@@ -42,7 +44,7 @@ describe('UNIT TESTS', function () {
                     .then(done, done);
             });
 
-            it('Expect UserData.register() to make correct POST call', function(done) {
+            it('Expect UserData.register() to make correct POST call', function (done) {
                 let url = `https://baas.kinvey.com/user/${kinveyConst.APP_ID}/`;
                 userData.register(user)
                     .then(() => {
@@ -59,18 +61,18 @@ describe('UNIT TESTS', function () {
                     .then(()=> {
                         expect(requester.post.firstCall.args.length).to.equal(2);
                     })
-                    .then(done,done)
+                    .then(done, done)
             });
 
             it('Expect UserData.register() to call post with valid url', function (done) {
                 userData.register(user)
-                    .then(()=>{
+                    .then(()=> {
                         expect(requester.post.firstCall.args[0]).to.equal(`https://baas.kinvey.com/user/kid_ry0hRoka/`)
                     })
-                    .then(done,done)
+                    .then(done, done)
             });
 
-            it('Expect UserData.register() to post correct user data', function(done) {
+            it('Expect UserData.register() to post correct user data', function (done) {
                 userData.register(user)
                     .then(() => {
                         const actual = requester.post
@@ -129,15 +131,15 @@ describe('UNIT TESTS', function () {
                     .then(()=> {
                         expect(requester.post.firstCall.args.length).to.equal(2);
                     })
-                    .then(done,done)
+                    .then(done, done)
             });
 
             it('Expect UserData.login() to call post with valid url', function (done) {
                 userData.login(user)
-                    .then(()=>{
+                    .then(()=> {
                         expect(requester.post.firstCall.args[0]).to.equal(`https://baas.kinvey.com/user/kid_ry0hRoka/login`)
                     })
-                    .then(done,done)
+                    .then(done, done)
             });
 
             it('Expect UserData.login() to put correct user data', function (done) {
@@ -232,29 +234,29 @@ describe('UNIT TESTS', function () {
                     .then(()=> {
                         expect(requester.get.firstCall.args.length).to.equal(2);
                     })
-                    .then(done,done)
+                    .then(done, done)
             });
 
 
             it('Expect ThreadData.getThread() to call get with valid url', function (done) {
                 threadData.getThread(name)
-                    .then(()=>{
+                    .then(()=> {
                         expect(requester.get.firstCall.args[0]).to.equal(`https://baas.kinvey.com/appdata/kid_ry0hRoka/${name}`)
                     })
-                    .then(done,done)
+                    .then(done, done)
             });
 
 
             it('Expect ThreadData.getThread() to return object', function (done) {
                 threadData.getThread()
-                    .then((result)=>{
+                    .then((result)=> {
                         expect(result).to.be.a('object')
                     })
-                    .then(done,done)
+                    .then(done, done)
             });
 
         });
-        
+
         describe('AddNewQuestion', function () {
             beforeEach(function () {
                 sinon.stub(requester, 'post', (url, options) => {
@@ -273,7 +275,7 @@ describe('UNIT TESTS', function () {
             });
         });
 
-        describe('GetQuestionById tests' ,function () {
+        describe('GetQuestionById tests', function () {
             beforeEach(function () {
                 sinon.stub(requester, 'get')
                     .returns(new Promise((resolve, reject) => {
@@ -305,15 +307,15 @@ describe('UNIT TESTS', function () {
                     .then(()=> {
                         expect(requester.get.firstCall.args.length).to.equal(2);
                     })
-                    .then(done,done)
+                    .then(done, done)
             });
 
             it('Expect ThreadData.getQuestionById() to return object', function (done) {
                 threadData.getQuestionById()
-                    .then((result)=>{
+                    .then((result)=> {
                         expect(result).to.be.a('object')
                     })
-                    .then(done,done)
+                    .then(done, done)
             });
         });
 
@@ -321,7 +323,51 @@ describe('UNIT TESTS', function () {
 });
 
 describe('INTEGRATION TESTS', function () {
+    describe('threadData tests', function () {
 
+        it('expect getThread("ios") to return array with threads', function (done) {
+            var user = {
+                "username": "admin",
+                "password": "admin"
+            };
+            userData.login(user)
+                .then(function (success) {
+                    localStorage.setItem('username', success.username);
+                    localStorage.setItem('userId', success._id);
+                    localStorage.setItem('authKey', success._kmd.authtoken);
+                })
+                .then(function () {
+                    threadData.getThread('ios')
+                        .then(response => {
+                            expect(response).to.be.a('array');
+                        })
+                        .then(done, done);
+                })
+
+
+        });
+
+        it('expect getQuestionById("57ef93f2a31702935171a0de","csharp") to retrun an object', function (done) {
+            var user = {
+                "username": "admin",
+                "password": "admin"
+            };
+            userData.login(user)
+                .then(function (success) {
+                    localStorage.setItem('username', success.username);
+                    localStorage.setItem('userId', success._id);
+                    localStorage.setItem('authKey', success._kmd.authtoken);
+                })
+                .then(function () {
+                    threadData.getQuestionById('57ef93f2a31702935171a0de', "csharp")
+                        .then(response => {
+                            expect(response).to.be.a('object');
+                        })
+                        .then(done, done);
+                })
+
+        })
+    })
 });
 
 
