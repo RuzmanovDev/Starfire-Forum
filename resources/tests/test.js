@@ -348,7 +348,29 @@ describe('INTEGRATION TESTS', function () {
 
         });
 
-        it('expect getQuestionById("57ef93f2a31702935171a0de","csharp") to retrun an object', function (done) {
+        it('expect getThread("iadadasd") to return array with  0 threads', function (done) {
+            var user = {
+                "username": "admin",
+                "password": "admin"
+            };
+            userData.login(user)
+                .then(function (success) {
+                    localStorage.setItem('username', success.username);
+                    localStorage.setItem('userId', success._id);
+                    localStorage.setItem('authKey', success._kmd.authtoken);
+                })
+                .then(function () {
+                    threadData.getThread('iadadasd')
+                        .then(response => {
+                            expect(response.length).to.equal(0);
+                        })
+                        .then(done, done);
+                })
+
+
+        });
+
+        it('expect getQuestionById("57ef93f2a31702935171a0de","csharp") to return an object', function (done) {
             var user = {
                 "username": "admin",
                 "password": "admin"
@@ -368,6 +390,162 @@ describe('INTEGRATION TESTS', function () {
                 })
 
         })
+
+        it("expect getQuestionById('57ef93f2a31702935171a0de','csharp') to return an object with specific keys ['_acl','_id', '_kmd','author','posts','question','title']", function (done) {
+            var user = {
+                "username": "admin",
+                "password": "admin"
+            };
+            userData.login(user)
+                .then(function (success) {
+                    localStorage.setItem('username', success.username);
+                    localStorage.setItem('userId', success._id);
+                    localStorage.setItem('authKey', success._kmd.authtoken);
+                })
+                .then(function () {
+                    threadData.getQuestionById('57ef93f2a31702935171a0de', "csharp")
+                        .then(response => {
+                            var allKeys = Object.keys(response).sort();
+                            var expected = ['_acl', '_id', '_kmd', 'author', 'posts', 'question', 'title'].sort();
+                            expect(allKeys).to.be.eql(expected);
+                        })
+                        .then(done, done);
+                })
+
+        })
+
+        it("expect getQuestionById('57f0f3cd2e981b650be92bac','ios') to return an object with specific keys ['_acl','_id', '_kmd','author','posts','question','title']", function (done) {
+            var user = {
+                "username": "admin",
+                "password": "admin"
+            };
+            userData.login(user)
+                .then(function (success) {
+                    localStorage.setItem('username', success.username);
+                    localStorage.setItem('userId', success._id);
+                    localStorage.setItem('authKey', success._kmd.authtoken);
+                })
+                .then(function () {
+                    threadData.getQuestionById('57f0f3cd2e981b650be92bac', "ios")
+                        .then(response => {
+                            var allKeys = Object.keys(response).sort();
+                            var expected = ['_acl', '_id', '_kmd', 'author', 'posts', 'question', 'title'].sort();
+                            expect(allKeys).to.be.eql(expected);
+                        })
+                        .then(done, done);
+                })
+
+        })
+
+        it("expect getQuestionById('57f0f415b72dc78f5866a0bc','javascript') to return an object with specific keys ['_acl','_id', '_kmd','author','posts','question','title']", function (done) {
+            var user = {
+                "username": "admin",
+                "password": "admin"
+            };
+            userData.login(user)
+                .then(function (success) {
+                    localStorage.setItem('username', success.username);
+                    localStorage.setItem('userId', success._id);
+                    localStorage.setItem('authKey', success._kmd.authtoken);
+                })
+                .then(function () {
+                    threadData.getQuestionById('57f0f415b72dc78f5866a0bc', "javascript")
+                        .then(response => {
+                            var allKeys = Object.keys(response).sort();
+                            var expected = ['_acl', '_id', '_kmd', 'author', 'posts', 'question', 'title'].sort();
+                            expect(allKeys).to.be.eql(expected);
+                        })
+                        .then(done, done);
+                })
+
+        });
+
+        it("expect rateCommentUp to work", function (done) {
+            let commentId = 74815;
+            let urlId = '57f0f415b72dc78f5866a0bc';
+            let categoryName = 'javascript';
+
+            let questionData = threadData.getQuestionById(urlId, categoryName);
+
+            var user = {
+                "username": "admin",
+                "password": "admin"
+            };
+
+            userData.login(user)
+                .then(function (success) {
+                    localStorage.setItem('username', success.username);
+                    localStorage.setItem('userId', success._id);
+                    localStorage.setItem('authKey', success._kmd.authtoken);
+                })
+                .then(function () {
+                    return questionData.then(function (data) {
+                        let commentOldRating = data.posts[0].rating;
+                        return commentOldRating
+                    });
+                })
+                .then(function (commentOldRating) {
+                    threadData.rateCommentUp(commentId, questionData, categoryName);
+                    return commentOldRating;
+                })
+                .then(function (commentOldRating) {
+                    return questionData.then(function (data) {
+                        let commentNewRating = data.posts[0].rating;
+                        return {
+                            commentOldRating,
+                            commentNewRating
+                        }
+                    });
+                })
+                .then(function (ratings) {
+                    expect(ratings.commentOldRating += 1).to.be.eql(ratings.commentNewRating);
+                })
+                .then(done, done);
+        })
+
+        it("expect rateCommentDown to work", function (done) {
+            let commentId = 74815;
+            let urlId = '57f0f415b72dc78f5866a0bc';
+            let categoryName = 'javascript';
+
+            let questionData = threadData.getQuestionById(urlId, categoryName);
+
+            var user = {
+                "username": "admin",
+                "password": "admin"
+            };
+
+            userData.login(user)
+                .then(function (success) {
+                    localStorage.setItem('username', success.username);
+                    localStorage.setItem('userId', success._id);
+                    localStorage.setItem('authKey', success._kmd.authtoken);
+                })
+                .then(function () {
+                    return questionData.then(function (data) {
+                        let commentOldRating = data.posts[0].rating;
+                        return commentOldRating
+                    });
+                })
+                .then(function (commentOldRating) {
+                    threadData.rateCommentDown(commentId, questionData, categoryName);
+                    return commentOldRating;
+                })
+                .then(function (commentOldRating) {
+                    return questionData.then(function (data) {
+                        let commentNewRating = data.posts[0].rating;
+                        return {
+                            commentOldRating,
+                            commentNewRating
+                        }
+                    });
+                })
+                .then(function (ratings) {
+                    expect(ratings.commentOldRating -= 1).to.be.eql(ratings.commentNewRating);
+                })
+                .then(done, done);
+        })
+
     });
 
     describe('userData tests', function () {
