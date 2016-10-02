@@ -1,0 +1,20 @@
+.question {
+    display: block;
+    padding: 35px 10px;
+
+    transition: all @transition_default;
+
+    border-bottom: 1px solid fade(@color_secondary_gray, 30%);
+
+    &:hover {
+        background: fade(@color_main, 5%);
+    }
+
+    .sub-title {
+        margin: 0;
+        margin-top: 10px;
+    }
+    .caption {
+        margin-top: 0;
+    }
+}

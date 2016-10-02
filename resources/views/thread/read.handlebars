@@ -1,9 +1,18 @@
-<div class="col-md-2 col-md-offset-5">
-    <h1>{{categoryName}} Development</h1>
-    {{#each data}}
-        <div class="container">
-            <a href="#/{{_id}}" id="{{title}}">{{title}}</a>
-            <h5>{{question}}</h5>
+<div class="container read-post">
+    <div class="content">
+        <div class="card">
+            <h4 class="big-title main uppercase">#{{categoryName}} Development</h4>
+            
+            <hr>
+           	
+           	{{#each data}}
+       	        <a href="#/{{_id}}" id="{{title}}" class="question">
+					<h5 class="sub-title main semibold">{{title}}</h5>
+					<p class="caption main">{{question}}</p>           	        
+       	        </a>
+           	{{/each}}
+
         </div>
-    {{/each}}
+
+    </div>
 </div>
