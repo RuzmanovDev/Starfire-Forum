@@ -169,13 +169,11 @@ class ThreadController {
         let searchedText = $('#searchText').val();
 
         console.log(searchedText);
-        console.log(JSON.parse(localStorage.threadData));
         let dataToSearchIn = JSON.parse(localStorage.threadData).data;
         let category = JSON.parse(localStorage.threadData).categoryName;
-        console.log(category);
+        // console.log(category);
 
         let searchResult = [];
-        searchResult.push(category);
 
         dataToSearchIn.forEach(function(element) {
 
@@ -183,8 +181,9 @@ class ThreadController {
             let question = element.question || "";
             let author = element.author || "";
 
-            if((title.indexOf(searchedText) !== -1) || (question.indexOf(searchedText) !== -1) || (author.indexOf(searchedText) !== -1)){
-                console.log(element._id);
+            if((title.toLowerCase().indexOf(searchedText.toLowerCase()) !== -1) ||
+                    (question.toLowerCase().indexOf(searchedText.toLowerCase()) !== -1) ||
+                    (author.toLowerCase().indexOf(searchedText.toLowerCase()) !== -1)){
                 searchResult.push(element._id);
             } else {
                 let posts = element.posts || [];
@@ -193,30 +192,33 @@ class ThreadController {
                     let author = post.author || "";
                     let content = post.content || "";
 
-                    if((author.indexOf(searchedText) !== -1) || (content.indexOf(searchedText) !== -1)){
-                        console.log(element._id);
+                    if((author.toLowerCase().indexOf(searchedText.toLowerCase()) !== -1) ||
+                            (content.toLowerCase().indexOf(searchedText.toLowerCase()) !== -1)){
                         searchResult.push(element._id);
                     }
                 });
             }
         });
-        console.log(searchResult);
+        // console.log(searchResult);
+        $("#wrapper").html("").append("<div class='col-md-2 col-md-offset-5'><h1>Search result:</h1></div>");
 
-        Promise.all([templateGenerator.load('search', 'search'), threadData.search(searchResult[1], searchResult[0])])
-            .then(function ([htmlTemplate, data]){
-                let searchedToDisplay = {
-                    data: data,
-                    categoryName: searchResult[0]
-                }
-                console.log(searchedToDisplay);
-                mainContainer.html(htmlTemplate(searchedToDisplay));
-            })
-            .catch(function(errorLog) {
-                notifier.error("No search result!");
-				console.log(errorLog);
-            })
+        searchResult.forEach(function(result){
+            Promise.all([templateGenerator.load('search', 'search'), threadData.search(result, category)])
+                .then(function ([htmlTemplate, data]){
+                    let searchedToDisplay = {
+                        data: data,
+                        categoryName: category
+                    }
+                    $(".col-md-2").append($(htmlTemplate(searchedToDisplay)));
+                })
+                .catch(function(errorLog) {
+                    notifier.error("No search result!");
+                    console.log(errorLog);
+                })
+        })
+
     }
-	
+
     addResponse() {
 
     }
