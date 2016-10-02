@@ -15,6 +15,7 @@ const user = {
     username: 'SOME_USERNAME',
     password: 'SOME_PASSHASH'
 };
+
 describe('UNIT TESTS', function () {
     describe('UserData tests', function () {
         describe('Register tests', function () {
@@ -367,7 +368,30 @@ describe('INTEGRATION TESTS', function () {
                 })
 
         })
-    })
+    });
+
+    describe('userData tests', function () {
+
+        it('expect login(user) to log in the the user', function (done) {
+            var user = {
+                "username": "admin",
+                "password": "admin"
+            };
+            userData.login(user)
+                .then(function (success) {
+                    localStorage.setItem('username', success.username);
+                    localStorage.setItem('userId', success._id);
+                    localStorage.setItem('authKey', success._kmd.authtoken);
+                })
+                .then(function () {
+                    expect(localStorage.getItem('username')).to.equal('admin')
+                })
+                .then(done, done);
+        })
+
+
+    });
+
 });
 
 

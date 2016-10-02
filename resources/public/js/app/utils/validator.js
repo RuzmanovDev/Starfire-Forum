@@ -1,5 +1,3 @@
-import toastr from 'toastr'
-
 class Validator {
     validateUser(user) {
         var regex = /^[a-zA-Z0-9 ]{2,20}$/;
