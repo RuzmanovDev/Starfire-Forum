@@ -4,8 +4,8 @@
   "description": "Teamwork for the Javascript applications course at Telerik academy",
   "main": "index.js",
   "scripts": {
-    "start": "start chrome ./index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node node_modules/live-server/live-server.js",
+    "test": "ec.ho \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -22,6 +22,7 @@
     "grunt-contrib-less": "^1.4.0",
     "grunt-contrib-watch": "^1.0.0",
     "jit-grunt": "^0.10.0",
+    "live-server": "^1.1.0",
     "sinon": "^1.17.6",
     "systemjs": "^0.19.38",
     "systemjs-plugin-babel": "0.0.15"
