@@ -1,3 +1,19 @@
+# Team Starfire
+
+## Team Project – Team Starfire Dev-World Forum
+### Team Members
+
+* [Стоян Рузманов](https://github.com/RuzmanovDev/)
+* [Силвия Ботева](https://github.com/silweto7)
+* [Иван Божков](https://github.com/ivanbozhkov)
+* [Никола Стефанов](https://github.com/stefanovnm)
+* [Ивайло Андонов](https://github.com/ivailoAndonov)
+
+### Demos
+
+* [Live demo](https://rawgit.com/RuzmanovDev/Team-Starfire-JsApps/master/index.html)
+* [Video demo]( https://www.youtube.com/watch?v=drBWPdtMHbI)
+
 # JavaScript Applications: Teamwork Assignment
 
 This document describes the teamwork assignment for Telerik Academy students in "JavaScript Applications" course
